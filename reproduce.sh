@@ -39,6 +39,7 @@ pip install pdfkit==1.0.0
 pip install -e DataInsights
 
 # Generate plots and tables
+mkdir Plots
 runipy Figure_4.ipynb
 runipy Figure_5.ipynb
 python Figure_6_a.ipynb
