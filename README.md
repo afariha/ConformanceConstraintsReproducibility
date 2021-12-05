@@ -1,6 +1,11 @@
 # Requires Python version Python 3.9.5
 ## Execute the following commands
 
+### Extract data
+```
+tar -xf data
+```
+
 ### Install baselines
 ```
 cd Baseline/PCA-CD/Libraries/
