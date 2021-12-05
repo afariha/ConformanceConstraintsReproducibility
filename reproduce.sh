@@ -43,8 +43,8 @@ pip install -e DataInsights
 mkdir Plots
 runipy Figure_4.ipynb
 runipy Figure_5.ipynb
-python Figure_6_a.ipynb
-python Figure_6_b.ipynb
+python Figure_6_a.py
+python Figure_6_b.py
 runipy Figure_6_c.ipynb
 runipy Figure_7.ipynb
 runipy Figure_8.ipynb
