@@ -1,7 +1,7 @@
 # Requires Python version Python 3.9.5
-# Execute the following or just run `sudo sh reproduce.sh`
+## Execute the following commands
 
-# Install baselines
+### Install baselines
 ```
 cd Baseline/PCA-CD/Libraries/
 tar -xf libpca-1.2.11.tar.gz
@@ -21,7 +21,8 @@ cd ../../ChangeDetection/
 sudo make
 ```
 
-# Create virtual environment and install dependencies
+### Create virtual environment and install dependencies
+#### Edit the second line below to point out to the location of `Python 3.9.5` in your machine
 ```
 cd ../../..
 virtualenv --python=/Library/Frameworks/Python.framework/Versions/3.9/bin/python3 venv
@@ -36,7 +37,7 @@ pip install pdfkit==1.0.0
 pip install -e DataInsights
 ```
 
-# Generate plots and tables
+### Generate plots and tables
 ```
 runipy Figure_4.ipynb
 runipy Figure_5.ipynb
