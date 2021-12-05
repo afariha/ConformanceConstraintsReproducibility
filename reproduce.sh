@@ -1,9 +1,12 @@
 # Requires Python version Python 3.9.5
 # Execute the following
 
-# Extract data
-tar -xf data
 
+# Download and data
+git lfs install
+git lfs pull --include=data.zip
+unzip data.zip
+rm -rf __MACOSX/
 # Install baselines
 cd Baseline/PCA-CD/Libraries/
 tar -xf libpca-1.2.11.tar.gz

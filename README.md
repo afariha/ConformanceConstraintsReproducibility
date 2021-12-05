@@ -1,9 +1,12 @@
 # Requires Python version Python 3.9.5
 ## Execute the following commands
 
-### Extract data
+### Download and extract data
 ```
-tar -xf data
+git lfs install
+git lfs pull --include=data.zip
+unzip data.zip
+rm -rf __MACOSX/
 ```
 
 ### Install baselines
