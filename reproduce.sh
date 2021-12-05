@@ -7,6 +7,7 @@ git lfs install
 git lfs pull --include=data.zip
 unzip data.zip
 rm -rf __MACOSX/
+
 # Install baselines
 cd Baseline/PCA-CD/Libraries/
 tar -xf libpca-1.2.11.tar.gz
