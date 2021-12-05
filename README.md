@@ -3,6 +3,7 @@
 
 ### Download and extract data
 ```
+brew install git-lfs
 git lfs install
 git lfs pull --include=data.zip
 unzip data.zip
