@@ -22,10 +22,6 @@ rc('text', usetex=True)
 
 warnings.filterwarnings('ignore')
 
-def get_df(dataset):
-    df = pd.read_csv(data_source_windows + dataset + ".txt", header=None)
-    return df    
-
 df_dict = None
 
 data_source = "data/uncompressed/har/"

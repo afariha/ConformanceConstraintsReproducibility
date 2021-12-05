@@ -90,8 +90,8 @@ from sklearn.linear_model import LogisticRegression
 from scipy.stats.stats import pearsonr   
 
 
-N = 50              # number of data points in the train/test set
-n_test_cases = 2    # number of experiments to run
+N = 5000              # number of data points in the train/test set
+n_test_cases = 10    # number of experiments to run
 step = 10
 
 score_drops = []
@@ -117,8 +117,8 @@ for kk in range(5, 56, step):
     
     for _ in range(n_test_cases):
         test_df, test_X, test_y = get_data_for_activities(mobile_activities, N=N)
-        train_df_1, train_X_1, train_y_1 = get_data_for_activities(sedentary_activities, N = mix_fraction)
-        train_df_2, train_X_2, train_y_2 = get_data_for_activities(mobile_activities, N = N - mix_fraction)
+        train_df_1, train_X_1, train_y_1 = get_data_for_activities(mobile_activities, N = mix_fraction)
+        train_df_2, train_X_2, train_y_2 = get_data_for_activities(sedentary_activities, N = N - mix_fraction)
 
         train_df = pd.concat([train_df_1, train_df_2], axis=0)
         train_X = np.vstack((train_X_1, train_X_2))
@@ -158,6 +158,8 @@ for kk in range(5, 56, step):
 
 systemName = 'CCSynth'
 
+print(score_drops)
+print(our_violations)
 print("PCC & P-Value", pearsonr(score_drops,our_violations))
     
 fig = plt.gcf()
@@ -171,7 +173,7 @@ plt.scatter(np.arange(10, 110, 10), score_drops, marker="o", c="C0", label="Clas
 
 plt.legend(ncol=1, loc='upper left')
 plt.ylim([0,1])
-plt.xlabel("Noise (%) during training", fontsize=14)
+plt.xlabel("Noise (\%) during training", fontsize=14)
 plt.ylabel("CC Violation/acc-drop", fontsize=14)
 plt.xticks(np.arange(10, 100, 20))
 
