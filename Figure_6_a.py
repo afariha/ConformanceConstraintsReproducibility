@@ -180,5 +180,3 @@ plt.ylabel("CC Violation/acc-drop", fontsize=14)
 plt.xticks(np.arange(10, 100, 20))
 
 plt.savefig(os.path.join("Plots", "Figure_6_a.pdf"), bbox_inches="tight")
-plt.show()
-plt.close()
