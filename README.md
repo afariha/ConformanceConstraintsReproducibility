@@ -1,7 +1,7 @@
 # Requires Python version Python 3.9.5
 ## Execute the following commands
 
-### Download and extract data
+### Download and extract data (or just simply download the data.zip from the repo and extract it manually)
 ```
 brew install git-lfs
 git lfs install
