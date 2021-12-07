@@ -12,6 +12,7 @@ sudo apt install unzip
 sudo apt-get update
 sudo apt-get install -y build-essential
 sudo apt-get install python3-pip
+sudo apt-get install texlive-full
 ```
 
 ## Clone the repo and cd to it
