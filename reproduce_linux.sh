@@ -38,3 +38,4 @@ sudo ./venv/bin/python Figure_6_b.py
 sudo ./venv/bin/python Figure_6_c.py
 sudo ./venv/bin/python Figure_7.py
 sudo ./venv/bin/python Figure_8.py
+
