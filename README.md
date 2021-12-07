@@ -6,7 +6,14 @@
 
 - From Power Shell (run as Administrator), execute `wsl --install`. Once done, reboot.
 - Download and install ubuntu from this link: https://ubuntu.com/wsl
-- Open the Ubuntu terminal and run `sudo sh ./reproduce_linux.sh`.
+
+## Clone the repo and cd to it
+```
+git clone https://github.com/afariha/ConformanceConstraintsReproducibility.git
+cd ConformanceConstraintsReproducibility
+```
+
+#### Automatic way (Windows) Open the Ubuntu terminal and run `sudo sh ./reproduce_linux.sh`.
 
 #### Manual way (Windows): Prepare the system with the following commands:
 
@@ -19,12 +26,6 @@ sudo apt-get install -y python3-pip
 ```
 
 # Now execute the following commands. If you are using Linux or Ubuntu within Windows: whenever present, use the command in parentheses. If using MAC, ignore anything in parentheses.
-
-## Clone the repo and cd to it
-```
-git clone https://github.com/afariha/ConformanceConstraintsReproducibility.git
-cd ConformanceConstraintsReproducibility
-```
 
 ## Install texlive
 ```
