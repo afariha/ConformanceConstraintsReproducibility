@@ -45,6 +45,7 @@ cd ../libpca-1.2.11
 sudo sh install.sh
 cd ../../ChangeDetection/
 sudo make
+sudo ldconfig
 ```
 
 ### Create virtual environment and install dependencies
