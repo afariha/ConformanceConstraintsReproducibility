@@ -34,6 +34,7 @@ rm -rf __MACOSX/
 ### Install baselines
 ```
 brew install cmake	(sudo apt install cmake)
+sudo apt-get install liblapack-dev
 cd Baseline/PCA-CD/Libraries/
 tar -xf libpca-1.2.11.tar.gz
 tar -xf armadillo-4.200.0.tar.gz 
