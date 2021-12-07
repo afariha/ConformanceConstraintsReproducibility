@@ -1,4 +1,6 @@
 # Requires Python version Python 3.9.5
+
+
 ## Execute the following commands
 
 ### Download and extract data using git-lfs (or just simply download the data.zip from the repo and extract it manually). Commands that would likely work for Linux are in parentheses.
@@ -12,6 +14,7 @@ rm -rf __MACOSX/
 
 ### Install baselines
 ```
+brew install cmake	(sudo apt install cmake)
 cd Baseline/PCA-CD/Libraries/
 tar -xf libpca-1.2.11.tar.gz
 tar -xf armadillo-4.200.0.tar.gz 
@@ -25,7 +28,6 @@ make
 sudo make install
 cd ../libpca-1.2.11
 sudo sh install.sh
-brew install cmake	(sudo apt install cmake)
 cd ../../ChangeDetection/
 sudo make
 ```

@@ -10,6 +10,7 @@ unzip data.zip
 rm -rf __MACOSX/
 
 # Install baselines
+brew install cmake
 cd Baseline/PCA-CD/Libraries/
 tar -xf libpca-1.2.11.tar.gz
 tar -xf armadillo-4.200.0.tar.gz 
@@ -23,7 +24,6 @@ make
 sudo make install
 cd ../libpca-1.2.11
 sudo sh install.sh
-brew install cmake
 cd ../../ChangeDetection/
 sudo make
 
