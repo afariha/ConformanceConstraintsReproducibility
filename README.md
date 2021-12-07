@@ -18,7 +18,7 @@ sudo apt-get install -y python3-pip
 ## Clone the repo and cd to it
 ```
 git clone https://github.com/afariha/ConformanceConstraintsReproducibility.git
-cd ConformaceConstraintsReproducibility
+cd ConformanceConstraintsReproducibility
 ```
 
 ### Download and extract data using git-lfs (or just simply download the data.zip from the repo and extract it manually). Commands that would likely work for Linux are in parentheses.
