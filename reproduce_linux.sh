@@ -30,22 +30,23 @@ cd ../../..
 sudo apt install python3-virtualenv
 virtualenv --python=/usr/bin/python3 venv
 source ./venv/bin/activate
-sudo python3 -m pip install ipykernel==6.6.0
-sudo python3 -m ipykernel install --name=venv
-sudo python3 -m pip install matplotlib==3.5.0
-sudo python3 -m pip install scikit-learn==1.0.1
-sudo python3 -m pip install jupyterlab==3.2.4
-sudo python3 -m pip install runipy==0.1.5
-sudo python3 -m pip install pdfkit==1.0.0
-sudo python3 -m pip install -e DataInsights
+pip install ipykernel==6.6.0
+sudo python -m ipykernel install --name=venv
+pip install matplotlib==3.5.0
+pip install scikit-learn==1.0.1
+pip install jupyterlab==3.2.4
+pip install runipy==0.1.5
+pip install pdfkit==1.0.0
+pip install pdfkit==2.8.2
+pip install -e DataInsights
 
 # Generate plots and tables
 sudo mkdir Plots
-sudo python3 Figure_4.py
-sudo python3 Figure_5.py
-sudo python3 Figure_6_a.py
-sudo python3 Figure_6_b.py
-sudo python3 Figure_6_c.py
-sudo python3 Figure_7.py
+sudo python Figure_4.py
+sudo python Figure_5.py
+sudo python Figure_6_a.py
+sudo python Figure_6_b.py
+sudo python Figure_6_c.py
+sudo python Figure_7.py
 #sudo runipy Figure_7.ipynb	# Keeping it only
-sudo python3 Figure_8.py
+sudo python Figure_8.py
