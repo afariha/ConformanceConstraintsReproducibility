@@ -1,10 +1,6 @@
 # Requires Python version Python 3.9.5
 # Execute the following
 
-# Clone repo
-git clone https://github.com/afariha/ConformanceConstraintsReproducibility.git
-cd ConformanceConstraintsReproducibility
-
 # Download and data
 brew install git-lfs
 git lfs install

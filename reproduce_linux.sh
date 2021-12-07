@@ -3,8 +3,6 @@ sudo apt-get update
 sudo apt install -y unzip
 sudo apt-get install -y build-essential
 sudo apt-get install -y python3-pip
-git clone https://github.com/afariha/ConformanceConstraintsReproducibility.git
-cd ConformanceConstraintsReproducibility
 sudo apt-get install -y texlive-full
 sudo apt-get install -y git-lfs
 git lfs install
