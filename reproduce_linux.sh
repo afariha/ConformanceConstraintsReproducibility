@@ -48,5 +48,4 @@ sudo python Figure_6_a.py
 sudo python Figure_6_b.py
 sudo python Figure_6_c.py
 sudo python Figure_7.py
-#sudo runipy Figure_7.ipynb	# Keeping it only
 sudo python Figure_8.py
