@@ -2,7 +2,6 @@
 
 ## If using Windows, do the following to prepare first
 
-- Install windows subsystem for linux using `wsl --install`
 - Download and install ubuntu from this link: https://ubuntu.com/wsl
 - Open the Ubuntu terminal and prepare the system with the following commands:
 
@@ -35,7 +34,6 @@ rm -rf __MACOSX/
 ### Install baselines
 ```
 brew install cmake	(sudo apt install cmake)
-brew install gfortran (sudo apt install gfortran)
 cd Baseline/PCA-CD/Libraries/
 tar -xf libpca-1.2.11.tar.gz
 tar -xf armadillo-4.200.0.tar.gz 
