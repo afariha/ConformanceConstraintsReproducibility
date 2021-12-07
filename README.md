@@ -1,6 +1,6 @@
 # Requires Python version Python 3.9.5
 
-# If Using Windows, do the following:
+## If Using Windows, do the following to prepare first
 
 - Install windows subsystem for linux using `wsl --install`
 - Download and install ubuntu from this link: https://ubuntu.com/wsl
