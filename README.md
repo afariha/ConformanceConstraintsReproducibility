@@ -13,12 +13,12 @@ git clone https://github.com/afariha/ConformanceConstraintsReproducibility.git
 cd ConformanceConstraintsReproducibility
 ```
 
-#### Automatic way (Windows) Open the Ubuntu terminal and run `sudo sh ./reproduce_linux.sh`.
+#### Automatic way (Windows/Linux) Open the Ubuntu terminal and run `sudo sh ./reproduce_linux.sh`.
 #### Automatic way (MAC) Open terminal and run `sudo sh ./reproduce_mac.sh`.
 
 #### Manual way 
 
-##### (Windows/Linux Only): Prepare the system:
+##### (Windows wls/Linux): Prepare the system:
 ```
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 sudo apt-get update
