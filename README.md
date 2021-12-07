@@ -13,8 +13,8 @@ git clone https://github.com/afariha/ConformanceConstraintsReproducibility.git
 cd ConformanceConstraintsReproducibility
 ```
 
-#### Automatic way (Windows/Linux) Open the Ubuntu terminal and run `sudo sh ./reproduce_linux.sh`.
-#### Automatic way (MAC) Open terminal and run `sudo sh ./reproduce_mac.sh`.
+#### Automatic way (Windows/Linux) Open the Ubuntu terminal (bash) and run `sudo sh ./reproduce_linux.sh`.
+#### Automatic way (MAC) Open terminal (bash) and run `sudo sh ./reproduce_mac.sh`.
 
 #### Manual way 
 
