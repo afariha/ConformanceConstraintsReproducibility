@@ -10,7 +10,6 @@ import numpy.random as rnd
 import matplotlib.pyplot as plt
 import os
 import sys
-from IPython.display import HTML
 import warnings
 from matplotlib import rc
 from matplotlib import rcParams
