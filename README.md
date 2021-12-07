@@ -39,17 +39,13 @@ brew install gfortran (sudo apt install gfortran)
 cd Baseline/PCA-CD/Libraries/
 tar -xf libpca-1.2.11.tar.gz
 tar -xf armadillo-4.200.0.tar.gz 
-tar -xf lapack-3.5.0.tgz
-cd lapack-3.5.0
-cmake .
-sudo make install
 cd ../armadillo-4.200.0
 cmake .
 sudo make install
 cd ../libpca-1.2.11
 sudo sh install.sh
 cd ../../ChangeDetection/
-sudo make (THIS IS NOT WORKING)
+sudo make
 ```
 
 ### Create virtual environment and install dependencies
