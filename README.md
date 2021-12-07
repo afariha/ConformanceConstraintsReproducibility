@@ -44,7 +44,7 @@ brew install cmake	(sudo apt install -y cmake)
 cd Baseline/PCA-CD/Libraries/
 tar -xf libpca-1.2.11.tar.gz
 tar -xf armadillo-4.200.0.tar.gz 
-cd ../armadillo-4.200.0
+cd armadillo-4.200.0
 cmake .
 sudo make install
 cd ../libpca-1.2.11
