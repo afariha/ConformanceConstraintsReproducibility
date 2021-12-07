@@ -9,7 +9,8 @@
 ```
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 sudo apt install unzip
-sudo apt-get updatesudo apt-get install -y build-essential
+sudo apt-get update
+sudo apt-get install -y build-essential
 sudo apt-get install python3-pip
 ```
 
