@@ -7,12 +7,13 @@
 
 ```
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-sudo apt install unzip
 sudo apt-get update
+sudo apt install -y unzip
 sudo apt-get install -y build-essential
-sudo apt-get install python3-pip
-sudo apt-get install texlive-full
+sudo apt-get install -y python3-pip
 ```
+
+# Now execute the following commands. If using Linux or Ubuntu in Windows, whenever present use the command in parentheses. If using MAC, ignore anything in parentheses.
 
 ## Clone the repo and cd to it
 ```
@@ -20,10 +21,9 @@ git clone https://github.com/afariha/ConformanceConstraintsReproducibility.git
 cd ConformaceConstraintsReproducibility
 ```
 
-## Execute the following commands
-
 ### Download and extract data using git-lfs (or just simply download the data.zip from the repo and extract it manually). Commands that would likely work for Linux are in parentheses.
 ```
+brew install texlive (sudo apt-get install -y texlive-full)
 brew install git-lfs	(sudo apt-get install git-lfs)
 git lfs install
 git lfs pull --include=data.zip
@@ -33,8 +33,8 @@ rm -rf __MACOSX/
 
 ### Install baselines
 ```
-brew install cmake	(sudo apt install cmake)
-(sudo apt-get install liblapack-dev)
+brew install cmake	(sudo apt install -y cmake)
+(sudo apt-get install -y liblapack-dev)
 cd Baseline/PCA-CD/Libraries/
 tar -xf libpca-1.2.11.tar.gz
 tar -xf armadillo-4.200.0.tar.gz 
@@ -52,7 +52,7 @@ sudo make
 #### Edit the third line below to point out to the location of `Python 3.9.5` in your machine
 ```
 cd ../../..
-brew install virtualenv (sudo apt-get install virtualenv)
+brew install virtualenv (sudo apt-get install -y virtualenv)
 virtualenv --python=/Library/Frameworks/Python.framework/Versions/3.9/bin/python3 venv (virtualenv --python=/usr/bin/python3 venv)
 source ./venv/bin/activate 
 pip install matplotlib==3.5.0
