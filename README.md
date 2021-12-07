@@ -24,7 +24,7 @@ cd ConformanceConstraintsReproducibility
 ### Download and extract data using git-lfs (or just simply download the data.zip from the repo and extract it manually). Commands that would likely work for Linux are in parentheses.
 ```
 brew install texlive (sudo apt-get install -y texlive-full)
-brew install git-lfs	(sudo apt-get install git-lfs)
+brew install git-lfs	(sudo apt-get install -y git-lfs)
 git lfs install
 git lfs pull --include=data.zip
 unzip data.zip
