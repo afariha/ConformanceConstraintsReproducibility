@@ -12,13 +12,6 @@ sudo apt install unzip
 sudo apt-get update
 sudo apt-get install -y build-essential
 sudo apt-get install python3-pip
-sudo apt-get install texlive-full
-```
-
-## Clone the repo and cd to it
-```
-git clone https://github.com/afariha/ConformanceConstraintsReproducibility.git
-cd ConformaceConstraintsReproducibility
 ```
 
 ## Execute the following commands
@@ -27,6 +20,7 @@ cd ConformaceConstraintsReproducibility
 ```
 brew install git-lfs	(sudo apt-get install git-lfs)
 git lfs install
+cd ConformaceConstraintsReproducibility
 git lfs pull --include=data.zip
 unzip data.zip
 rm -rf __MACOSX/
@@ -40,10 +34,7 @@ tar -xf libpca-1.2.11.tar.gz
 tar -xf armadillo-4.200.0.tar.gz 
 tar -xf lapack-3.5.0.tgz
 cd armadillo-4.200.0
-cmake .
-make
-sudo make install
-cmake .
+./configure
 make
 sudo make install
 cd ../libpca-1.2.11
