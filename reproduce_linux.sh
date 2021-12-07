@@ -1,7 +1,7 @@
 # Requires Python version Python 3.9.5
 
 # Make sure git-lfs is installed
-sudo apt install git-lfs
+sudo apt-get install git-lfs
 git lfs pull --include=data.zip
 unzip data.zip
 rm -rf __MACOSX/
@@ -37,10 +37,10 @@ pip install -e DataInsights
 
 # Generate plots and tables
 sudo mkdir Plots
-sudo python Figure_4.py
-sudo python Figure_5.py
-sudo python Figure_6_a.py
-sudo python Figure_6_b.py
-sudo python Figure_6_c.py
-sudo python Figure_7.py
-sudo python Figure_8.py
+sudo ./venv/bin/python Figure_4.py
+sudo ./venv/bin/python Figure_5.py
+sudo ./venv/bin/python Figure_6_a.py
+sudo ./venv/bin/python Figure_6_b.py
+sudo ./venv/bin/python Figure_6_c.py
+sudo ./venv/bin/python Figure_7.py
+sudo ./venv/bin/python Figure_8.py
