@@ -1,5 +1,7 @@
 # Requires Python version Python 3.9.5
 
+## If using Max, install homebrew from here: https://brew.sh/
+
 ## If using Windows, do the following to prepare first
 
 - Download and install ubuntu from this link: https://ubuntu.com/wsl
