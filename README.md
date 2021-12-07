@@ -52,6 +52,7 @@ sudo sh install.sh
 cd ../../ChangeDetection/
 sudo make
 (sudo ldconfig)
+(sudo apt-get install -y libarmadillo-dev)
 ```
 
 ### Create virtual environment and install dependencies
