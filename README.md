@@ -44,13 +44,12 @@ cd lapack-3.5.0
 cmake .
 sudo make install
 cd ../armadillo-4.200.0
-./configure
-make
+cmake .
 sudo make install
 cd ../libpca-1.2.11
 sudo sh install.sh
 cd ../../ChangeDetection/
-sudo make
+sudo make (THIS IS NOT WORKING)
 ```
 
 ### Create virtual environment and install dependencies
