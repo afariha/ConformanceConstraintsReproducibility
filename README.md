@@ -15,7 +15,7 @@ sudo apt-get install -y build-essential
 sudo apt-get install -y python3-pip
 ```
 
-# Now execute the following commands. If using Linux or Ubuntu in Windows, whenever present use the command in parentheses. If using MAC, ignore anything in parentheses.
+# Now execute the following commands. If you are using Linux or Ubuntu within Windows: whenever present, use the command in parentheses. If using MAC, ignore anything in parentheses.
 
 ## Clone the repo and cd to it
 ```
@@ -23,9 +23,13 @@ git clone https://github.com/afariha/ConformanceConstraintsReproducibility.git
 cd ConformanceConstraintsReproducibility
 ```
 
-### Download and extract data using git-lfs (or just simply download the data.zip from the repo and extract it manually). Commands that would likely work for Linux are in parentheses.
+## Install texlive
 ```
 brew install texlive (sudo apt-get install -y texlive-full)
+```
+
+### Download and extract data using git-lfs (or just simply download the data.zip from the repo and extract it manually).
+```
 brew install git-lfs	(sudo apt-get install -y git-lfs)
 git lfs install
 git lfs pull --include=data.zip
@@ -33,7 +37,7 @@ unzip data.zip
 rm -rf __MACOSX/
 ```
 
-### Install baselines
+### Install baselines and related depenedencies
 ```
 brew install cmake	(sudo apt install -y cmake)
 (sudo apt-get install -y liblapack-dev)
