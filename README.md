@@ -14,9 +14,11 @@ cd ConformanceConstraintsReproducibility
 ```
 
 #### Automatic way (Windows) Open the Ubuntu terminal and run `sudo sh ./reproduce_linux.sh`.
+#### Automatic way (MAC) Open terminal and run `sudo sh ./reproduce_mac.sh`.
 
-#### Manual way (Windows): Prepare the system with the following commands:
+#### Manual way 
 
+##### (Windows/Linux Only): Prepare the system:
 ```
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 sudo apt-get update
@@ -25,7 +27,7 @@ sudo apt-get install -y build-essential
 sudo apt-get install -y python3-pip
 ```
 
-# Now execute the following commands. If you are using Linux or Ubuntu within Windows: whenever present, use the command in parentheses. If using MAC, ignore anything in parentheses.
+## Now execute the following commands. If you are using Linux or Ubuntu within Windows: whenever present, use the command in parentheses. If using MAC, ignore anything in parentheses.
 
 ## Install texlive
 ```
