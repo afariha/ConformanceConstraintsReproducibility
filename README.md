@@ -20,6 +20,7 @@ sudo apt-get install python3-pip
 ```
 brew install git-lfs	(sudo apt-get install git-lfs)
 git lfs install
+cd ConformaceConstraintsReproducibility
 git lfs pull --include=data.zip
 unzip data.zip
 rm -rf __MACOSX/
