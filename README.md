@@ -4,7 +4,7 @@
 
 ## If using Windows, do the following to prepare first
 
-- From powershell, execute `wsl --install`
+- From powershell (run as Administrator), execute `wsl --install`
 - Download and install ubuntu from this link: https://ubuntu.com/wsl
 - Open the Ubuntu terminal and prepare the system with the following commands:
 
