@@ -4,9 +4,11 @@
 
 ## If using Windows, do the following to prepare first
 
-- From powershell (run as Administrator), execute `wsl --install`. Once done, reboot.
+- From Power Shell (run as Administrator), execute `wsl --install`. Once done, reboot.
 - Download and install ubuntu from this link: https://ubuntu.com/wsl
-- Open the Ubuntu terminal and prepare the system with the following commands:
+- Open the Ubuntu terminal and run `sudo sh ./reproduce_linux.sh`.
+
+#### Manual way (Windows): Prepare the system with the following commands:
 
 ```
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
@@ -63,9 +65,9 @@ cd ../../..
 brew install virtualenv (sudo apt-get install -y virtualenv)
 virtualenv --python=/Library/Frameworks/Python.framework/Versions/3.9/bin/python3 venv (virtualenv --python=/usr/bin/python3 venv)
 source ./venv/bin/activate 
-pip install matplotlib==3.5.0
-pip install scikit-learn==1.0.1
-pip install -e DataInsights
+sudo ./venv/bin/pip install matplotlib==3.5.0
+sudo ./venv/bin/pip install scikit-learn==1.0.1
+sudo ./venv/bin/pip install -e DataInsights
 ```
 
 # Generate plots and tables
