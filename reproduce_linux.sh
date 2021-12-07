@@ -41,11 +41,11 @@ sudo python3 -m pip install -e DataInsights
 
 # Generate plots and tables
 sudo mkdir Plots
-sudo python Figure_4.py
-sudo python Figure_5.py
-sudo python Figure_6_a.py
-sudo python Figure_6_b.py
-sudo python Figure_6_c.py
-sudo python Figure_7.py
-sudo runipy Figure_7.ipynb	# Keeping it only
-sudo python Figure_8.py
+sudo python3 Figure_4.py
+sudo python3 Figure_5.py
+sudo python3 Figure_6_a.py
+sudo python3 Figure_6_b.py
+sudo python3 Figure_6_c.py
+sudo python3 Figure_7.py
+#sudo runipy Figure_7.ipynb	# Keeping it only
+sudo python3 Figure_8.py
