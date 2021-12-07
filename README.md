@@ -1,9 +1,9 @@
 # Requires Python version Python 3.9.5
 ## Execute the following commands
 
-### Download and extract data (or just simply download the data.zip from the repo and extract it manually)
+### Download and extract data using git-lfs (or just simply download the data.zip from the repo and extract it manually). Commands that would likely work for Linux are in parentheses.
 ```
-brew install git-lfs
+brew install git-lfs	(sudo apt install git-lfs)
 git lfs install
 git lfs pull --include=data.zip
 unzip data.zip
@@ -25,24 +25,20 @@ make
 sudo make install
 cd ../libpca-1.2.11
 sudo sh install.sh
-brew install cmake
+brew install cmake	(sudo apt install cmake)
 cd ../../ChangeDetection/
 sudo make
 ```
 
 ### Create virtual environment and install dependencies
-#### Edit the second line below to point out to the location of `Python 3.9.5` in your machine
+#### Edit the third line below to point out to the location of `Python 3.9.5` in your machine
 ```
 cd ../../..
-virtualenv --python=/Library/Frameworks/Python.framework/Versions/3.9/bin/python3 venv
-source ./venv/bin/activate
-pip install ipykernel==6.6.0
-sudo python -m ipykernel install --name=venv
+brew install virtualenv (sudo apt install python3-virtualenv)
+virtualenv --python=/Library/Frameworks/Python.framework/Versions/3.9/bin/python3 venv (virtualenv --python=/usr/bin/python3 venv)
+source ./venv/bin/activate 
 pip install matplotlib==3.5.0
 pip install scikit-learn==1.0.1
-pip install jupyterlab==3.2.4
-pip install runipy==0.1.5
-pip install pdfkit==1.0.0
 pip install -e DataInsights
 ```
 
@@ -56,6 +52,5 @@ sudo python Figure_6_a.py
 sudo python Figure_6_b.py
 sudo python Figure_6_c.py
 sudo python Figure_7.py
-sudo runipy Figure_7.ipynb	# Keeping it only
 sudo python Figure_8.py
 ```

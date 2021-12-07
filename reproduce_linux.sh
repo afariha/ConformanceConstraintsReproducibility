@@ -1,5 +1,4 @@
 # Requires Python version Python 3.9.5
-# Execute the following
 
 # Make sure git-lfs is installed
 sudo apt install git-lfs
@@ -28,16 +27,12 @@ sudo make
 # Create virtual environment and install dependencies
 cd ../../..
 sudo apt install python3-virtualenv
+
+# Change the line below to point out to the location where python3 is installed
 virtualenv --python=/usr/bin/python3 venv
 source ./venv/bin/activate
-pip install ipykernel==6.6.0
-sudo python -m ipykernel install --name=venv
 pip install matplotlib==3.5.0
 pip install scikit-learn==1.0.1
-pip install jupyterlab==3.2.4
-pip install runipy==0.1.5
-pip install pdfkit==1.0.0
-pip install pdfkit==2.8.2
 pip install -e DataInsights
 
 # Generate plots and tables

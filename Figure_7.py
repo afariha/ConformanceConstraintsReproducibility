@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 import prose.datainsights as di
 import os
-import pdfkit
 
 sensors = ["acc", "Gyroscope"]
 activities = ["lying", "running", "sitting", "standing", "walking"] 
@@ -81,4 +80,3 @@ pretty = violation_matrix_temp.style.background_gradient(cmap='Blues', subset=["
 tmp = os.path.join("Plots", "Figure_7.html")
 with open(tmp, 'w') as f:
     f.write(pretty._repr_html_().replace('><thead> ', 'style="border-spacing: 0;"><thead> '))
-    
