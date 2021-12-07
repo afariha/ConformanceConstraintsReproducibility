@@ -14,16 +14,16 @@ cd Baseline/PCA-CD/Libraries/
 tar -xf libpca-1.2.11.tar.gz
 tar -xf armadillo-4.200.0.tar.gz 
 tar -xf lapack-3.5.0.tgz
-cd libpca-1.2.11
+cd armadillo-4.200.0
+cmake .
+make
+sudo make install
+cmake .
+make
+sudo make install
+cd ../libpca-1.2.11
 sudo sh install.sh
 brew install cmake
-cd ../armadillo-4.200.0
-cmake .
-make
-sudo make install
-cmake .
-make
-sudo make install
 cd ../../ChangeDetection/
 sudo make
 
@@ -42,10 +42,11 @@ pip install -e DataInsights
 
 # Generate plots and tables
 sudo mkdir Plots
-sudo runipy Figure_4.ipynb
-sudo runipy Figure_5.ipynb
+sudo python Figure_4.py
+sudo python Figure_5.py
 sudo python Figure_6_a.py
 sudo python Figure_6_b.py
-sudo runipy Figure_6_c.ipynb
-sudo runipy Figure_7.ipynb
-sudo runipy Figure_8.ipynb
+sudo python Figure_6_c.py
+sudo python Figure_7.py
+sudo runipy Figure_7.ipynb	# Keeping it only
+sudo python Figure_8.py
