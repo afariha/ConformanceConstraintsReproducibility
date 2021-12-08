@@ -7,7 +7,7 @@
   - From Power Shell (run as Administrator), execute `wsl --install`. Once done, reboot.
   - Download and install ubuntu from this link: https://ubuntu.com/wsl
 
-## (Step 2) Clone the repo and cd to it
+## (Step 2) Clone this repository and cd to it
 ```
 git clone https://github.com/afariha/ConformanceConstraintsReproducibility.git
 cd ConformanceConstraintsReproducibility
@@ -15,11 +15,11 @@ cd ConformanceConstraintsReproducibility
 
 ### (Step 3) Reproduce (Automatic)
 - Windows/Linux: Open the Ubuntu terminal (bash) and run `sudo sh ./reproduce_linux.sh`.
-- MAX: Open terminal (bash) and run `sudo sh ./reproduce_mac.sh`.
+- MAC: Open terminal (bash) and run `sudo sh ./reproduce_mac.sh`.
 
 ### (Step 3) Reproduce (Manual steps)
 
-- (Step 3-A) Prepare the system: Only needed for Windows WSL/Linux (Ubunutu)
+- (Step 3-A) Prepare the system: Only needed for Windows WSL or Linux (Ubuntu)
 ```
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 sudo apt-get update
@@ -62,8 +62,8 @@ sudo make
 (sudo apt-get install -y libarmadillo-dev)
 ```
 
-- (Step 3-E) Create virtual environment and install dependencies
-  - Note: Edit the third line below to point out to the location of `Python 3.9.5` in your machine
+- (Step 3-E) Create a virtual environment and install dependencies
+  - Note: Edit the third line below to point out to the location of `Python 3.9.5` in your machine.
 ```
 cd ../../..
 brew install virtualenv (sudo apt-get install -y virtualenv)
