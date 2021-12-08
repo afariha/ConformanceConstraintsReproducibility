@@ -1,11 +1,9 @@
-# Requires Python version Python 3.9.5
-
-## If using MAC, install homebrew from here: https://brew.sh/
-
-## If using Windows, do the following to prepare first
-
-- From Power Shell (run as Administrator), execute `wsl --install`. Once done, reboot.
-- Download and install ubuntu from this link: https://ubuntu.com/wsl
+# Reproduction Steps
+- Requires Python version Python 3.9.5
+- If using MAC, install homebrew from here: https://brew.sh/
+- If using Windows, do the following to prepare first
+  - From Power Shell (run as Administrator), execute `wsl --install`. Once done, reboot.
+  - Download and install ubuntu from this link: https://ubuntu.com/wsl
 
 ## Clone the repo and cd to it
 ```
