@@ -1,13 +1,13 @@
 # Reproduction Steps
 - Requires Python version Python 3.9.5 (Python 3.7 and 3.8 should also work, but we recommend 3.9.5)
 
-## (Step 1) Initial setup
+### (Step 1) Initial setup
 - If using MAC, install homebrew from here: https://brew.sh/
 - If using Windows, do the following to prepare first
   - From Power Shell (run as Administrator), execute `wsl --install`. Once done, reboot.
   - Download and install ubuntu from this link: https://ubuntu.com/wsl
 
-## (Step 2) Clone this repository and cd to it
+### (Step 2) Clone this repository and cd to it
 ```
 git clone https://github.com/afariha/ConformanceConstraintsReproducibility.git
 cd ConformanceConstraintsReproducibility
