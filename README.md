@@ -1,22 +1,25 @@
 # Reproduction Steps
-- Requires Python version Python 3.9.5
+- Requires Python version Python 3.9.5 (Python 3.7 and 3.8 should also work, but we recommend 3.9.5)
+
+## (Step 1) Initial setup
 - If using MAC, install homebrew from here: https://brew.sh/
 - If using Windows, do the following to prepare first
   - From Power Shell (run as Administrator), execute `wsl --install`. Once done, reboot.
   - Download and install ubuntu from this link: https://ubuntu.com/wsl
 
-## Clone the repo and cd to it
+## (Step 2) Clone the repo and cd to it
 ```
 git clone https://github.com/afariha/ConformanceConstraintsReproducibility.git
 cd ConformanceConstraintsReproducibility
 ```
 
-#### Automatic way (Windows/Linux) Open the Ubuntu terminal (bash) and run `sudo sh ./reproduce_linux.sh`.
-#### Automatic way (MAC) Open terminal (bash) and run `sudo sh ./reproduce_mac.sh`.
+### (Step 3) Reproduce (Automatic)
+- Windows/Linux: Open the Ubuntu terminal (bash) and run `sudo sh ./reproduce_linux.sh`.
+- MAX: Open terminal (bash) and run `sudo sh ./reproduce_mac.sh`.
 
-#### Manual way 
+### (Step 3) Reproduce (Manual steps)
 
-##### (Windows wls/Linux): Prepare the system:
+- (Step 3-A) Prepare the system: Only needed for Windows WSL/Linux (Ubunutu)
 ```
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 sudo apt-get update
@@ -25,14 +28,14 @@ sudo apt-get install -y build-essential
 sudo apt-get install -y python3-pip
 ```
 
-## Now execute the following commands. If you are using Linux or Ubuntu within Windows: whenever present, use the command in parentheses. If using MAC, ignore anything in parentheses.
+- Note: For what follows, if you are using Linux or Ubuntu WSL over Windows: whenever present, use the command in parentheses. If using MAC, ignore anything in parentheses.
 
-## Install texlive
+- (Step 3-B) Install texlive
 ```
 brew install texlive (sudo apt-get install -y texlive-full)
 ```
 
-### Download and extract data using git-lfs (or just simply download the data.zip from the repo and extract it manually).
+- (Step 3-C) Download and extract data using git-lfs (or just simply download the data.zip from the repo and extract it manually).
 ```
 brew install git-lfs	(sudo apt-get install -y git-lfs)
 git lfs install
@@ -41,7 +44,7 @@ unzip data.zip
 rm -rf __MACOSX/
 ```
 
-### Install baselines and related depenedencies
+- (Step 3-D) Install baselines and related depenedencies
 ```
 brew install cmake	(sudo apt install -y cmake)
 (sudo apt-get install -y liblapack-dev)
@@ -59,8 +62,8 @@ sudo make
 (sudo apt-get install -y libarmadillo-dev)
 ```
 
-### Create virtual environment and install dependencies
-#### Edit the third line below to point out to the location of `Python 3.9.5` in your machine
+- (Step 3-E) Create virtual environment and install dependencies
+  - Note: Edit the third line below to point out to the location of `Python 3.9.5` in your machine
 ```
 cd ../../..
 brew install virtualenv (sudo apt-get install -y virtualenv)
@@ -71,7 +74,7 @@ sudo ./venv/bin/pip install scikit-learn==1.0.1
 sudo ./venv/bin/pip install -e DataInsights
 ```
 
-# Generate plots and tables
+- (Step 3-F) Generate plots and tables
 
 ```
 sudo mkdir Plots
@@ -84,5 +87,5 @@ sudo ./venv/bin/python Figure_7.py
 sudo ./venv/bin/python Figure_8.py
 ```
 
-# What to expect?
+## What to expect?
 You should see 7 files within the directory `Plots`. They should match the corresponding ones in the [paper](https://dl.acm.org/doi/abs/10.1145/3448016.3452795).
