@@ -6,6 +6,9 @@
 # Change this to where your Python 3.9.5 is.
 PYTHON=/Library/Frameworks/Python.framework/Versions/3.9/bin/python3
 
+# Print the commands.
+set -x
+
 # ref: https://askubuntu.com/questions/425754/how-do-i-run-a-sudo-command-inside-a-script
 if [ $(id -u) != 0 ]; then
     echo "Please run this script as root."
@@ -18,7 +21,7 @@ real_user=$SUDO_USER
 sudo -u $real_user brew install git-lfs
 sudo -u $real_user git lfs install
 sudo -u $real_user git lfs pull --include=data.zip
-sudo -u $real_user unzip data.zip
+sudo -u $real_user unzip -f data.zip
 sudo -u $real_user find . -name "__MACOSX" -type d  # Recursively delete __MACOSX directories.
 
 # Install texlive
@@ -39,6 +42,9 @@ sh install.sh
 cd ../../ChangeDetection/
 make
 
+# We don't want to fail from this point onward.
+set -e
+
 # Create virtual environment and install dependencies
 cd ../../..
 
@@ -53,7 +59,7 @@ sudo -s -u $real_user ./venv/bin/pip install matplotlib==3.5.0 scikit-learn==1.0
 sudo -s -u $real_user ./venv/bin/pip install -e DataInsights
 
 # Generate plots and tables
-sudo -u $real_user mkdir Plots
+sudo -u $real_user mkdir -p Plots
 ./venv/bin/python Figure_4.py
 ./venv/bin/python Figure_5.py
 ./venv/bin/python Figure_6_a.py
