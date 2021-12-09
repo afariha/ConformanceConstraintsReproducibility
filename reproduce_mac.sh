@@ -12,11 +12,7 @@ if [ $(id -u) != 0 ]; then
     exit 1
 fi
 
-if [ $SUDO_USER ]; then
-    real_user=$SUDO_USER
-else
-    real_user=$(whoami)
-fi
+real_user=$SUDO_USER
 
 # Download and data
 sudo -u $real_user brew install git-lfs
