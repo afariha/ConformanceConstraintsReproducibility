@@ -1,41 +1,57 @@
-curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-sudo apt-get update
-sudo apt install -y unzip
-sudo apt-get install -y build-essential
-sudo apt-get install -y python3-pip
-sudo apt-get install -y texlive-full
-sudo apt-get install -y git-lfs
-git lfs install
-git lfs pull --include=data.zip
-unzip data.zip
-rm -rf __MACOSX/
-sudo apt install -y cmake
-sudo apt-get install -y liblapack-dev
+#!/bin/sh
+
+PYTHON=$(which python3)
+
+set -x
+
+if [ $(id -u) != 0 ]; then
+    echo "Please run this script as root."
+    exit 1
+fi
+
+wget https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh -O - | bash
+apt-get update
+apt install -y unzip
+apt-get install -y build-essential
+apt-get install -y python3-pip
+apt-get install -y texlive-full
+apt-get install -y git-lfs
+sudo -u $SUDO_USER git lfs install
+sudo -u $SUDO_USER git lfs pull --include=data.zip
+sudo -u $SUDO_USER unzip data.zip
+sudo -u $SUDO_USER rm -rf __MACOSX/
+apt install -y cmake
+apt-get install -y liblapack-dev
 cd Baseline/PCA-CD/Libraries/
-tar -xf libpca-1.2.11.tar.gz
-tar -xf armadillo-4.200.0.tar.gz 
+sudo -u $SUDO_USER tar -xf libpca-1.2.11.tar.gz
+sudo -u $SUDO_USER tar -xf armadillo-4.200.0.tar.gz
 cd armadillo-4.200.0
 cmake .
-sudo make install
+make install
 cd ../libpca-1.2.11
-sudo sh install.sh
+sh install.sh
 cd ../../ChangeDetection/
-sudo make
-sudo ldconfig
-sudo apt-get install -y libarmadillo-dev
+make
+ldconfig
+apt-get install -y libarmadillo-dev
 cd ../../..
-sudo apt-get install -y virtualenv
-virtualenv --python=/usr/bin/python3 venv
-source ./venv/bin/activate 
-sudo ./venv/bin/pip install matplotlib==3.5.0
-sudo ./venv/bin/pip install scikit-learn==1.0.1
-sudo ./venv/bin/pip install -e DataInsights
-sudo mkdir Plots
-sudo ./venv/bin/python Figure_4.py
-sudo ./venv/bin/python Figure_5.py
-sudo ./venv/bin/python Figure_6_a.py
-sudo ./venv/bin/python Figure_6_b.py
-sudo ./venv/bin/python Figure_6_c.py
-sudo ./venv/bin/python Figure_7.py
-sudo ./venv/bin/python Figure_8.py
+apt-get install -y virtualenv
 
+if ! command -v virtualenv &> /dev/null
+then
+    sudo -u $SUDO_USER virtualenv --python=/usr/bin/python3 venv
+else
+    sudo -u $SUDO_USER $PYTHON -m venv venv
+fi
+
+sudo -u $SUDO_USER ./venv/bin/pip install matplotlib==3.5.0 scikit-learn==1.0.1
+sudo -u $SUDO_USER ./venv/bin/pip install -e DataInsights
+
+sudo -u $SUDO_USER mkdir Plots
+./venv/bin/python Figure_4.py
+./venv/bin/python Figure_5.py
+./venv/bin/python Figure_6_a.py
+./venv/bin/python Figure_6_b.py
+./venv/bin/python Figure_6_c.py
+./venv/bin/python Figure_7.py
+./venv/bin/python Figure_8.py
