@@ -44,7 +44,7 @@ if __name__ == "__main__":
         include_package_data=True,
         install_requires=[
             "dotnetcore2 >= 2.1.8",
-            "Jinja2==2.10.1",
+            "Jinja2==2.11",
             "pandas >= 0.24.2",
             "protobuf >= 3.8.0",
             "regex >= 2017.7.28",
