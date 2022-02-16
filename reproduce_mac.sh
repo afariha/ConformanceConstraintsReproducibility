@@ -61,3 +61,10 @@ sudo -u $real_user mkdir -p Plots
 ./venv/bin/python Figure_6_c.py
 ./venv/bin/python Figure_7.py
 ./venv/bin/python Figure_8.py
+
+# Reproduce paper
+cd Paper
+pdflatex paper
+bibtex paper
+pdflatex paper
+pdflatex paper
