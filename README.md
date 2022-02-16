@@ -89,3 +89,15 @@ sudo ./venv/bin/python Figure_8.py
 
 ## What to expect?
 You should see 7 files within the directory `Plots`. They should match the corresponding ones in the [paper](https://dl.acm.org/doi/abs/10.1145/3448016.3452795).
+
+
+## Reproducing the paper
+### Execute the following commands
+
+```
+cd paper
+pdflatex paper
+bibtex paper
+pdflatex paper
+pdflatex paper
+```
