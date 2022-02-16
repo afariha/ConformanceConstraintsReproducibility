@@ -101,3 +101,5 @@ bibtex paper
 pdflatex paper
 pdflatex paper
 ```
+
+You should see the paper reproduced as `paper.pdf`
