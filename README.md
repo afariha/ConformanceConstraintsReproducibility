@@ -102,4 +102,4 @@ pdflatex paper
 pdflatex paper
 ```
 
-You should see the paper reproduced as `paper.pdf`
+You should see the paper reproduced as `paper.pdf`.
