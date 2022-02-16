@@ -1,0 +1,322 @@
+%!TEX root = paper.tex
+
+\looseness-1 
+%Data is central to modern systems in a wide range of domains.
+%, including healthcare, transportation, and finance. 
+The core of modern data-driven systems typically comprises of models learned
+from large datasets, and they are usually optimized to target particular data
+and workloads. While these data-driven systems have seen wide adoption and
+success, their reliability and proper functioning hinge on the data's continued
+conformance to the systems' initial settings and assumptions. When the serving
+data (on which the system operates) deviates from the profile of the initial
+data (on which the system was trained), system performance degrades and system
+behavior becomes unreliable. Therefore, a mechanism to assess the
+trustworthiness of a system's inferences is paramount, especially for systems
+that perform safety-critical or high-impact operations.
+
+A machine-learned (ML) model typically works best if the serving dataset
+follows the profile of the dataset the model was trained on; when it doesn't,
+the model's inference can be unreliable. One can profile a dataset in many
+ways, such as by modeling the data distribution of the
+dataset~\cite{achlioptas2017learning}, or by finding the (implicit)
+\emph{constraints} that the dataset satisfies~\cite{pena2019discovery}.
+Distribution-oriented approaches learn data likelihood (e.g., joint or
+conditional distribution) from the training data, and can be used to check if
+the serving data is unlikely. An unlikely tuple does not necessarily imply that
+the model would fail for it. The problem with the distribution-oriented
+approaches is that they tend to overfit, and, thus, are overly conservative
+towards unseen tuples, leading them to report many such false positives.
+
+\looseness-1 We argue that certain constraints offer a more effective and
+robust mechanism to quantify trust of a model's inference on a serving tuple.
+The reason is that learning systems implicitly exploit such constraints during
+model training, and build models that assume that the constraints will continue
+to hold for serving data. For example, when there exist high correlations among
+attributes in the training data, learning systems will likely reduce the
+weights assigned to redundant attributes that can be deduced from others, or
+eliminate them altogether through dimensionality reduction. If the serving data
+preserves the same correlations, such operations are inconsequential;
+otherwise, we may observe model failure.
+
+\looseness-1 In this paper, we characterize datasets with a new data-profiling
+primitive, \emph{\dis}, and we present a mechanism to identify \emph{strong}
+\dis, whose violation indicates unreliable inference. \Dis specify constraints
+over \emph{arithmetic relationships} involving multiple numerical attributes of
+a dataset. We argue that a tuple's conformance to the \dis is more critical for
+accurate inference than its conformance to the training data distribution. This
+is because any violation of \dis is likely to result in a catastrophic failure
+of a learned model that is built upon the assumption that the \dis will always
+hold. Thus, we can use a tuple's deviation from the \dis as a proxy for the
+trust on a learned model's inference for that tuple. We proceed to describe a
+real-world example of \dis, drawn from our case-study evaluation on
+\emph{trusted machine learning} (TML).
+
+\setlength{\tabcolsep}{.5em}
+\renewcommand{\arraystretch}{.9}
+\begin{figure}[t]
+\centering
+    \resizebox{1\columnwidth}{!}
+	{\small
+	
+    \begin{tabular}{lcccc}
+    \toprule
+     							& \textbf{Departure} 		& \textbf{Departure Time} 		& \textbf{Arrival Time} 		& \textbf{Duration (min)} 	\\
+								& \textbf{Date} 	 		& \textbf{[DT]} 				&  \textbf{[AT]} 				& \textbf{[DUR]} 		  	\\
+    \midrule
+		$t_1$ 					& May 2 					& \texttt{14:30} 				& \texttt{18:20}  				& 230 					  	\\
+		$t_2$ 					& July 22 					& \texttt{09:05}				& \texttt{12:15}  				& 195 					  	\\
+        \revisetwo{$t_3$} 		& 	\revisetwo{June 6} 		& \revisetwo{\texttt{10:20}}	  & \revisetwo{\texttt{12:20}}  & \revisetwo{115} 			\\ 
+		$t_4$ 					& May 19 					& \texttt{11:10} 				& \texttt{13:05}  			   	& 117 						\\
+		\rowcolor{vlightgray}
+		$t_5$ 					& April 7 					& \texttt{22:30}  			  & \texttt{06:10}  			  	& 458						\\
+
+    \bottomrule
+    \end{tabular}
+    }
+	\vspace{-3mm}
+    \caption{\small
+	%
+	 Sample of the airlines dataset (details are in
+	 Section~\ref{exp-invariants-for-ML}), showing departure, arrival, and
+	 duration only. The dataset does not report arrival date, but an arrival time
+	 earlier than departure time (e.g., last row), indicates an overnight flight.
+	 \reviseone{All times are in 24 hour format} and in the same time zone. There is some
+	 noise in the values.
+	%
+	} 
+	\vspace{-2mm}
+    \label{fig:flights}
+\end{figure}
+
+\begin{example}\label{ex:tml}
+	\looseness-1
+
+We used a dataset with flight information that includes data on departure and
+arrival times, flight duration, etc.\ (Fig.~\ref{fig:flights}) to train a
+linear regression model to predict flight delays. \revisetwo{The model was
+trained on a subset of the data that happened to include only daytime flights
+(such as the first four tuples)}. In an empirical evaluation of the regression
+accuracy, we found that the mean absolute error of the regression output more
+than quadruples for overnight flights (such as the last tuple $t_5$), compared
+to daytime flights. The reason is that tuples representing overnight flights
+deviate from the profile of the training data \revisetwo{that only contained
+daytime flights}. Specifically, daytime flights satisfy the \di that ``arrival
+time is later than departure time and their difference is very close to the
+flight duration'', which does not hold for overnight flights. Note that this
+\invariant is just based on the covariates (predictors) and does not involve
+the target attribute $\mathtt{delay}$. Critically, although this \di is unaware
+of the regression task, it was still a good proxy of the regressor's
+performance. \revisetwo{In contrast, approaches that model data likelihood may
+report long daytime flights as unlikely, since all flights in the training data
+($t_1$--$t_4$) were also short flights, resulting in false alarms, as the model
+works very well for most daytime flights, regardless of the duration (i.e., for
+both short and long daytime flights).}
+	%
+\end{example}
+
+\revisetwo{Example~\ref{ex:tml} demonstrates that when training data has
+\emph{coincidental} relationships (e.g., the one between $\mathtt{AT}$,
+$\mathtt{DT}$, and $\mathtt{DUR}$ for daytime flights), then ML models may
+\emph{implicitly} assume them as \emph{invariants}. \Dis can capture such data
+invariants and flag non-conforming tuples (overnight flights) during
+serving.}\label{extake}
+
+\smallskip
+
+\paragraph{\Dis.} \Dis complement the existing data profiling literature, as
+the existing constraint models, such as functional dependencies and denial
+constraints, cannot model arithmetic relationships. For example, the \di of
+Example~\ref{ex:tml} is: $-\epsilon_1 \le \mathtt{AT} - \mathtt{DT} -
+\mathtt{DUR} \le \epsilon_2$, where $\epsilon_1$ and $\epsilon_2$ are small
+values. \Dis can capture complex linear dependencies across attributes within a
+\emph{noisy} dataset. For example, if the flight departure and arrival data
+reported the hours and the minutes across separate attributes, the \invariant
+would be on a different arithmetic expression: $(60\cdot \mathtt{arrHour} +
+\mathtt{arrMin}) - (60\cdot \mathtt{depHour} + \mathtt{depMin}) -
+\mathtt{duration}$.
+
+\looseness-1 The core component of a \di is the arithmetic expression, called
+\emph{projection}, which is obtained by a linear combination of the numerical
+attributes. There is an unbounded number of projections that we can use to form
+arbitrary \dis. For example, for the projection $\mathtt{AT}$, we can find a
+broad range $[\epsilon_3, \epsilon_4]$, such that all training tuples in
+Example~\ref{ex:tml} satisfy the \di $\epsilon_3 \le \mathtt{AT} \le
+\epsilon_4$. However, this \invariant is too inclusive and a learned model is
+unlikely to exploit such a weak constraint. In contrast, the projection
+$\mathtt{AT} - \mathtt{DT} - \mathtt{DUR}\;$ leads to a stronger \di with a
+narrow range as its bounds, which is selectively permissible, and, thus, more
+effective.
+
+\smallskip
+
+\paragraph{Challenges and solution sketch.} The principal challenge is to
+discover an \emph{effective} set of conformance constraints that are likely to
+affect a model's inference implicitly. We first characterize ``good''
+projections (that construct effective constraints) and then propose a method to
+discover them. We establish through theoretical analysis two important results:
+(1)~A projection is good over a dataset if it is almost constant (i.e., has low
+variance) over all tuples in that dataset. (2)~A set of projections,
+collectively, is good if the projections have small pair-wise correlations. We
+show that low variance components of a principal component analysis (PCA) on a
+dataset yield such a set of \views. Note that this is different from---and, in
+fact, completely opposite of---the traditional approaches
+(e.g.,~\cite{DBLP:conf/kdd/QahtanAWZ15}) that perform multidimensional analysis
+based on the high-variance principal components, after reducing dimensionality
+using PCA.
+
+\smallskip
+
+\paragraph{Scope.} \looseness-1 Fig.~\ref{relatedWorkMatrix} summarizes prior
+work on related problems, but our scope differs significantly. Specifically, we
+can detect if a serving tuple is non-conforming with respect to the training
+dataset \emph{only based on its predictor attributes}, and require no knowledge
+of the ground truth. This setting is essential in many practical applications
+when we observe \emph{extreme verification latency}~\cite{souzaSDM:2015}, where
+ground truths for serving tuples are not immediately available. For example,
+consider a self-driving car that is using a trained controller to generate
+actions based on readings of velocity, relative positions of obstacles, and
+their velocities. In this case, we need to determine, only based on the sensor
+readings (predictors), when the driver should be alerted to take over vehicle
+control.
+%, as we cannot use ground-truths to generate an alert.
+%
+Furthermore, we \emph{do not assume access to the model}, i.e., model's
+predictions on a given tuple. This setting is necessary for (1)~safety-critical
+applications, where the goal is to quickly alert the user, without waiting for
+the availability of the prediction, (2)~auditing and privacy-preserving
+applications where the prediction cannot be shared, and (3)~when we are unaware
+of the detailed functionality of the system due to privacy concerns or lack of
+jurisdiction.
+% , but only have some
+% meta-information such as the system trains some linear model over the training
+% data.
+%
+We focus on identifying \emph{tuple-level} non-conformance as opposed to
+dataset-level non-conformance that usually requires observing entire data's
+distribution. However, our tuple-level approach trivially extends (by
+aggregation) to the entire dataset.
+
+\input{table-comparison}
+
+\smallskip
+
+\paragraph{Contrast with prior art.} We now discuss where \dis fit with respect
+to the existing literature (Fig.~\ref{relatedWorkMatrix}).
+% on data profiling and literature on modeling trust in data-driven inferences 
+
+\looseness-1 \subsubsection*{Data profiling techniques} \Dis fall under the
+umbrella of data profiling, which refers to the task of extracting~tech\-nical
+metadata about a given dataset~\cite{DBLP:journals/vldb/AbedjanGN15}. A key
+task in data profiling is to learn relationships among attributes. Functional
+dependencies (FD)~\cite{papenbrock2015functional} and their variants only
+capture if a relationship exists between two sets of attributes, but do not
+provide a closed-form (parametric) expression of the relationship. Using the FD
+``$\{\mathtt{AT}, \mathtt{DT}\} \rightarrow$ $\{\mathtt{DUR}\}$'' to model the
+\invariant of Example~\ref{ex:tml} suffers from several limitations. First,
+since the data is noisy, no exact FD can be learned. Metric
+FDs~\cite{koudas2009metric} allow small variations in the data,
+% (similar
+% attribute values are considered identical), 
+but hinge on appropriate distance metrics and thresholds. For example, if
+$\mathtt{time}$ is split across two attributes ($\mathtt{hour}$ and
+$\mathtt{minute}$), the distance metric is non-trivial: it needs to encode that
+$\langle \mathtt{hour} = 4, \mathtt{min} = 59 \rangle$ and $\langle
+\mathtt{hour} = 5, \mathtt{min} = 1\rangle$ are similar, while $\langle
+\mathtt{hour} = 4, \mathtt{min} = 1\rangle$ and $\langle \mathtt{hour} = 5,
+\mathtt{min} = 59\rangle$ are not. In contrast, \dis can model the composite
+attribute ($60 \cdot \mathtt{hour} + \mathtt{minute}$) by automatically
+discovering the coefficients $60$ and $1$.
+% for such a composite attribute.
+
+\looseness-1 Denial constraints (DC)~\cite{DBLP:journals/pvldb/ChuIP13,
+DBLP:journals/pvldb/BleifussKN17, pena2019discovery,
+DBLP:journals/corr/abs-2005-08540} encapsulate a number of different
+data-profiling primitives such as FDs and their variants (e.g,~\cite{
+DBLP:conf/icde/FanGLX09}). Exact DCs can adjust to noisy data by adding
+predicates until the constraint becomes exact over the entire dataset, but this
+can make the constraint extremely large and complex, which might even fail to
+provide the desired generalization. For example, a finite DC---whose language
+is limited to universally quantified first-order logic---cannot model the
+constraint of Example~\ref{ex:tml}, which involves an arithmetic expression
+(addition and multiplication with a constant). Expressing \dis requires a
+richer language that includes linear arithmetic expressions. \revisetwo{Pattern
+functional dependencies (PFD)~\cite{qahtan2020pattern} move towards addressing
+this limitation of DCs, but they focus on text attributes: they are regex-based
+and treat digits as characters. However, modeling arithmetic relationships of
+numerical attributes requires interpreting digits as numbers.}
+
+\looseness-1 To adjust for noise, FDs and DCs either relax the notion of
+constraint violation or allow a user-defined fraction of tuples to violate the
+(strict) constraint~\cite{pena2019discovery, huhtala1999tane,
+kruse2018efficient, DBLP:conf/sigmod/IlyasMHBA04, koudas2009metric,
+caruccio2016discovery, DBLP:journals/corr/abs-2005-08540}. Some
+approaches~\cite{DBLP:conf/sigmod/IlyasMHBA04, DBLP:conf/sigmod/ZhangGR20,
+DBLP:conf/sigmod/YanSZWC20} use statistical techniques to model other types of
+data profiles such as correlations and conditional dependencies. However, they
+require additional parameters such as noise and violation thresholds and
+distance metrics. In contrast, \dis do not require any parameter from the user
+and work on noisy datasets.
+
+\revisetwo{Existing data profiling techniques are not designed to learn what ML
+models exploit and are sensitive to noise in the numerical attributes.
+Moreover, data constraint discovery algorithms typically search over an
+exponential set of candidates, and hence, are not scalable: their complexity
+grows exponentially with the number of attributes or quadratically with data
+size. In contrast, our technique for deriving \dis is highly scalable (linear
+in data size) and efficient (cubic in the number of attributes). It does not
+explicitly explore the candidate space, as PCA---which lies at the core of our
+technique---performs the search \emph{implicitly} by iteratively refining
+weaker \invariants to stronger ones.} \label{nocandidate}
+
+\subsubsection*{Learning techniques} While \emph{ordinary least square} finds
+the lowest-variance projection, it minimizes observational error on only the
+target attribute, and, thus, does not apply to our setting. \emph{Total least
+square} offers a partial solution as it takes observational errors on all
+predictor attributes into account; but, it finds only one projection---the
+lowest variance one---that fits the data tuples best. But there may exist other
+projections with slightly higher variances and we consider them all. As we show
+empirically in Section~\ref{exp-invariants-for-drift}, constraints derived from
+multiple projections, collectively, capture various aspects of the data, and
+result in an effective data profile targeted towards certain tasks such as
+data-drift quantification~\citeTechRep.
+
+\medskip 
+
+\paragraph{Contributions.} We make the following contributions:
+
+\begin{itemize}
+
+     \item We ground the motivation of our work with two case studies on trusted
+     machine learning (TML) and data drift. (Section~\ref{sec:casestudies})
+     
+     \item We introduce and formalize \dis, a new data profiling primitive that
+     specifies constraints over arithmetic relationships among numerical
+     attributes of a dataset. We describe a \emph{conformance language} to
+     express \dis, and a \emph{quantitative semantics} to quantify how much a
+     tuple violates the \dis. In applications of constraint violations, some
+     violations may be more or less critical than others. To capture that, we
+     consider a notion of \invariant importance, and weigh violations against
+     \invariants accordingly. (Section~\ref{sec:data-invs})
+      
+     \item We formally establish that strong \dis are constructed from
+     projections with small variance and small mutual correlation on the given
+     dataset. Beyond simple linear \invariants (e.g., the one in
+     Example~\ref{ex:tml}), we derive \emph{disjunctive} \invariants, which are
+     disjunctions of linear \invariants. We achieve this by dividing the
+     dataset into disjoint partitions, and learning linear \invariants for each
+     partition. We provide an efficient, scalable, and highly parallelizable
+     algorithm for computing a set of linear \dis and disjunctions over them.
+     We also analyze its runtime and memory complexity.
+     (Section~\ref{sec:synth-data-inv})
+     
+     \item We formalize the notion of \emph{\nc} tuples in the context of
+     trusted machine learning and provide a mechanism to detect \nc tuples
+     using \dis. (Section~\ref{sec:di-for-tml})
+	 
+     \item We empirically analyze the effectiveness of \dis in two case-study
+     applications---TML and data-drift quantification. We show that \dis can
+     reliably predict the trustworthiness of linear models and quantify data
+     drift precisely, outperforming the state of the art.
+     (Section~\ref{sec:experiments})
+	 
+  \end{itemize}

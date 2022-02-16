@@ -1,0 +1,932 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{75}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{#1}\fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[\protect\citeauthoryear{Abedjan, Golab, and Naumann}{Abedjan
+  et~al\mbox{.}}{2015}]%
+        {DBLP:journals/vldb/AbedjanGN15}
+\bibfield{author}{\bibinfo{person}{Ziawasch Abedjan}, \bibinfo{person}{Lukasz
+  Golab}, {and} \bibinfo{person}{Felix Naumann}.}
+  \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Profiling relational data: a survey}.
+\newblock \bibinfo{journal}{\emph{{VLDB} J.}} \bibinfo{volume}{24},
+  \bibinfo{number}{4} (\bibinfo{year}{2015}), \bibinfo{pages}{557--581}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Achlioptas, Diamanti, Mitliagkas, and
+  Guibas}{Achlioptas et~al\mbox{.}}{2018}]%
+        {achlioptas2017learning}
+\bibfield{author}{\bibinfo{person}{Panos Achlioptas}, \bibinfo{person}{Olga
+  Diamanti}, \bibinfo{person}{Ioannis Mitliagkas}, {and}
+  \bibinfo{person}{Leonidas~J. Guibas}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Learning Representations and Generative Models for
+  3D Point Clouds}. In \bibinfo{booktitle}{\emph{{ICML}}},
+  Vol.~\bibinfo{volume}{80}. \bibinfo{pages}{40--49}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Aggarwal}{Aggarwal}{2003}]%
+        {DBLP:conf/sigmod/Aggarwal03}
+\bibfield{author}{\bibinfo{person}{Charu~C. Aggarwal}.}
+  \bibinfo{year}{2003}\natexlab{}.
+\newblock \showarticletitle{A Framework for Diagnosing Changes in Evolving Data
+  Streams}. In \bibinfo{booktitle}{\emph{SIGMOD}}. \bibinfo{pages}{575--586}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Airlines Dataset}{Airlines Dataset}{2009}]%
+        {airlineSource}
+Airlines Dataset \bibinfo{year}{2009}\natexlab{}.
+\newblock
+\newblock
+\newblock
+\shownote{\url{http://kt.ijs.si/elena_ikonomovska/data.html}.}
+
+
+\bibitem[\protect\citeauthoryear{Alzate and Suykens}{Alzate and
+  Suykens}{2008}]%
+        {alzate2008kernel}
+\bibfield{author}{\bibinfo{person}{Carlos Alzate} {and}
+  \bibinfo{person}{Johan~AK Suykens}.} \bibinfo{year}{2008}\natexlab{}.
+\newblock \showarticletitle{Kernel component analysis using an
+  epsilon-insensitive robust loss function}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Neural Networks}}
+  \bibinfo{volume}{19}, \bibinfo{number}{9} (\bibinfo{year}{2008}),
+  \bibinfo{pages}{1583--1598}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Barddal, Gomes, Enembreck, and
+  Pfahringer}{Barddal et~al\mbox{.}}{2017}]%
+        {DBLP:journals/jss/BarddalGEP17}
+\bibfield{author}{\bibinfo{person}{Jean~Paul Barddal},
+  \bibinfo{person}{Heitor~Murilo Gomes}, \bibinfo{person}{Fabr{\'{\i}}cio
+  Enembreck}, {and} \bibinfo{person}{Bernhard Pfahringer}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{A survey on feature drift adaptation: Definition,
+  benchmark, challenges and future directions}.
+\newblock \bibinfo{journal}{\emph{Journal of Systems and Software}}
+  \bibinfo{volume}{127} (\bibinfo{year}{2017}), \bibinfo{pages}{278--294}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Bifet and Gavald{\`{a}}}{Bifet and
+  Gavald{\`{a}}}{2007}]%
+        {DBLP:conf/sdm/BifetG07}
+\bibfield{author}{\bibinfo{person}{Albert Bifet} {and} \bibinfo{person}{Ricard
+  Gavald{\`{a}}}.} \bibinfo{year}{2007}\natexlab{}.
+\newblock \showarticletitle{Learning from Time-Changing Data with Adaptive
+  Windowing}. In \bibinfo{booktitle}{\emph{SDM}}. \bibinfo{pages}{443--448}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Bleifu{\ss}, Kruse, and Naumann}{Bleifu{\ss}
+  et~al\mbox{.}}{2017}]%
+        {DBLP:journals/pvldb/BleifussKN17}
+\bibfield{author}{\bibinfo{person}{Tobias Bleifu{\ss}},
+  \bibinfo{person}{Sebastian Kruse}, {and} \bibinfo{person}{Felix Naumann}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Efficient Denial Constraint Discovery with Hydra}.
+\newblock \bibinfo{journal}{\emph{{PVLDB}}} \bibinfo{volume}{11},
+  \bibinfo{number}{3} (\bibinfo{year}{2017}), \bibinfo{pages}{311--323}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Bu, Alippi, and Zhao}{Bu
+  et~al\mbox{.}}{2018}]%
+        {DBLP:journals/tnn/BuAZ18}
+\bibfield{author}{\bibinfo{person}{Li Bu}, \bibinfo{person}{Cesare Alippi},
+  {and} \bibinfo{person}{Dongbin Zhao}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{A pdf-Free Change Detection Test Based on Density
+  Difference Estimation}.
+\newblock \bibinfo{journal}{\emph{{IEEE} Trans. Neural Netw. Learning Syst.}}
+  \bibinfo{volume}{29}, \bibinfo{number}{2} (\bibinfo{year}{2018}),
+  \bibinfo{pages}{324--334}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Caruccio, Deufemia, and Polese}{Caruccio
+  et~al\mbox{.}}{2016}]%
+        {caruccio2016discovery}
+\bibfield{author}{\bibinfo{person}{Loredana Caruccio},
+  \bibinfo{person}{Vincenzo Deufemia}, {and} \bibinfo{person}{Giuseppe
+  Polese}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{On the discovery of relaxed functional
+  dependencies}. In \bibinfo{booktitle}{\emph{Proceedings of the 20th
+  International Database Engineering \& Applications Symposium}}.
+  \bibinfo{pages}{53--61}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{CCSynth Source Code}{CCSynth Source
+  Code}{2021}]%
+        {diSource}
+CCSynth Source Code \bibinfo{year}{2021}\natexlab{}.
+\newblock
+\newblock
+\newblock
+\shownote{\url{https://github.com/microsoft/prose/tree/main/misc/CCSynth}.}
+
+
+\bibitem[\protect\citeauthoryear{Chu, Ilyas, and Papotti}{Chu
+  et~al\mbox{.}}{2013}]%
+        {DBLP:journals/pvldb/ChuIP13}
+\bibfield{author}{\bibinfo{person}{Xu Chu}, \bibinfo{person}{Ihab~F. Ilyas},
+  {and} \bibinfo{person}{Paolo Papotti}.} \bibinfo{year}{2013}\natexlab{}.
+\newblock \showarticletitle{Discovering Denial Constraints}.
+\newblock \bibinfo{journal}{\emph{{PVLDB}}} \bibinfo{volume}{6},
+  \bibinfo{number}{13} (\bibinfo{year}{2013}), \bibinfo{pages}{1498--1509}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Dasu, Krishnan, Venkatasubramanian, and
+  Yi}{Dasu et~al\mbox{.}}{2006}]%
+        {dasu2006information}
+\bibfield{author}{\bibinfo{person}{Tamraparni Dasu}, \bibinfo{person}{Shankar
+  Krishnan}, \bibinfo{person}{Suresh Venkatasubramanian}, {and}
+  \bibinfo{person}{Ke Yi}.} \bibinfo{year}{2006}\natexlab{}.
+\newblock \showarticletitle{An information-theoretic approach to detecting
+  changes in multi-dimensional data streams}. In
+  \bibinfo{booktitle}{\emph{Symp. on the Interface of Statistics, Computing
+  Science, and Applications}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{de~Mello, Vaz, Ferreira, and Bifet}{de~Mello
+  et~al\mbox{.}}{2019}]%
+        {DBLP:journals/eswa/MelloVFB19}
+\bibfield{author}{\bibinfo{person}{Rodrigo~Fernandes de Mello},
+  \bibinfo{person}{Yule Vaz}, \bibinfo{person}{Carlos Henrique~Grossi
+  Ferreira}, {and} \bibinfo{person}{Albert Bifet}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{On learning guarantees to unsupervised concept
+  drift detection on data streams}.
+\newblock \bibinfo{journal}{\emph{Expert Syst. Appl.}}  \bibinfo{volume}{117}
+  (\bibinfo{year}{2019}), \bibinfo{pages}{90--102}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Denouden, Salay, Czarnecki, Abdelzad, Phan,
+  and Vernekar}{Denouden et~al\mbox{.}}{2018}]%
+        {DBLP:journals/corr/abs-1812-02765}
+\bibfield{author}{\bibinfo{person}{Taylor Denouden}, \bibinfo{person}{Rick
+  Salay}, \bibinfo{person}{Krzysztof Czarnecki}, \bibinfo{person}{Vahdat
+  Abdelzad}, \bibinfo{person}{Buu Phan}, {and} \bibinfo{person}{Sachin
+  Vernekar}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Improving Reconstruction Autoencoder
+  Out-of-distribution Detection with Mahalanobis Distance}.
+\newblock \bibinfo{journal}{\emph{CoRR}}  \bibinfo{volume}{abs/1812.02765}
+  (\bibinfo{year}{2018}).
+\newblock
+\showeprint[arxiv]{1812.02765}
+
+
+\bibitem[\protect\citeauthoryear{dos Reis, Flach, Matwin, and Batista}{dos Reis
+  et~al\mbox{.}}{2016}]%
+        {DBLP:conf/kdd/ReisFMB16}
+\bibfield{author}{\bibinfo{person}{Denis~Moreira dos Reis},
+  \bibinfo{person}{Peter~A. Flach}, \bibinfo{person}{Stan Matwin}, {and}
+  \bibinfo{person}{Gustavo E. A. P.~A. Batista}.}
+  \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Fast Unsupervised Online Drift Detection Using
+  Incremental Kolmogorov-Smirnov Test}. In \bibinfo{booktitle}{\emph{SIGKDD}}.
+  \bibinfo{pages}{1545--1554}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Extreme Verification Latency Benchmark Video
+  (Nonstationary Environments - Archive):}{Extreme Verification Latency
+  Benchmark Video (Nonstationary Environments - Archive):}{2020}]%
+        {evlVideo}
+Extreme Verification Latency Benchmark Video (Nonstationary Environments -
+  Archive): \bibinfo{year}{2020}\natexlab{}.
+\newblock
+\newblock
+\newblock
+\shownote{\url{https://sites.google.com/site/nonstationaryarchive/home}.}
+
+
+\bibitem[\protect\citeauthoryear{Faithfull, Diez, and Kuncheva}{Faithfull
+  et~al\mbox{.}}{2019}]%
+        {DBLP:journals/inffus/FaithfullDK19}
+\bibfield{author}{\bibinfo{person}{William~J. Faithfull}, \bibinfo{person}{Juan
+  Jos{\'{e}}~Rodr{\'{\i}}guez Diez}, {and} \bibinfo{person}{Ludmila~I.
+  Kuncheva}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Combining univariate approaches for ensemble change
+  detection in multivariate data}.
+\newblock \bibinfo{journal}{\emph{Information Fusion}}  \bibinfo{volume}{45}
+  (\bibinfo{year}{2019}), \bibinfo{pages}{202--214}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Fan, Geerts, Lakshmanan, and Xiong}{Fan
+  et~al\mbox{.}}{2009}]%
+        {DBLP:conf/icde/FanGLX09}
+\bibfield{author}{\bibinfo{person}{Wenfei Fan}, \bibinfo{person}{Floris
+  Geerts}, \bibinfo{person}{Laks V.~S. Lakshmanan}, {and} \bibinfo{person}{Ming
+  Xiong}.} \bibinfo{year}{2009}\natexlab{}.
+\newblock \showarticletitle{Discovering Conditional Functional Dependencies}.
+  In \bibinfo{booktitle}{\emph{ICDE}}. \bibinfo{pages}{1231--1234}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Fariha, Tiwari, Radhakrishna, and
+  Gulwani}{Fariha et~al\mbox{.}}{2020a}]%
+        {DBLP:conf/sigmod/FarihaTRG20}
+\bibfield{author}{\bibinfo{person}{Anna Fariha}, \bibinfo{person}{Ashish
+  Tiwari}, \bibinfo{person}{Arjun Radhakrishna}, {and} \bibinfo{person}{Sumit
+  Gulwani}.} \bibinfo{year}{2020}\natexlab{a}.
+\newblock \showarticletitle{ExTuNe: Explaining Tuple Non-conformance}. In
+  \bibinfo{booktitle}{\emph{{SIGMOD}}}. \bibinfo{pages}{2741--2744}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Fariha, Tiwari, Radhakrishna, Gulwani, and
+  Meliou}{Fariha et~al\mbox{.}}{2020b}]%
+        {technicalReport}
+\bibfield{author}{\bibinfo{person}{Anna Fariha}, \bibinfo{person}{Ashish
+  Tiwari}, \bibinfo{person}{Arjun Radhakrishna}, \bibinfo{person}{Sumit
+  Gulwani}, {and} \bibinfo{person}{Alexandra Meliou}.}
+  \bibinfo{year}{2020}\natexlab{b}.
+\newblock \showarticletitle{Conformance Constraint Discovery: Measuring Trust
+  in Data-Driven Systems}.
+\newblock \bibinfo{journal}{\emph{CoRR}}  \bibinfo{volume}{abs/2003.01289}
+  (\bibinfo{year}{2020}).
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Gaber and Yu}{Gaber and Yu}{2006}]%
+        {gaber2006classification}
+\bibfield{author}{\bibinfo{person}{Mohamed~Medhat Gaber} {and}
+  \bibinfo{person}{Philip~S Yu}.} \bibinfo{year}{2006}\natexlab{}.
+\newblock \showarticletitle{Classification of changes in evolving data streams
+  using online clustering result deviation}. In \bibinfo{booktitle}{\emph{Proc.
+  Of International Workshop on Knowledge Discovery in Data Streams}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Gama, Medas, Castillo, and Rodrigues}{Gama
+  et~al\mbox{.}}{2004}]%
+        {DBLP:conf/sbia/GamaMCR04}
+\bibfield{author}{\bibinfo{person}{Jo{\~{a}}o Gama}, \bibinfo{person}{Pedro
+  Medas}, \bibinfo{person}{Gladys Castillo}, {and}
+  \bibinfo{person}{Pedro~Pereira Rodrigues}.} \bibinfo{year}{2004}\natexlab{}.
+\newblock \showarticletitle{Learning with Drift Detection}. In
+  \bibinfo{booktitle}{\emph{Advances in Artificial Intelligence - {SBIA}}}.
+  \bibinfo{pages}{286--295}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Gama, Zliobaite, Bifet, Pechenizkiy, and
+  Bouchachia}{Gama et~al\mbox{.}}{2014}]%
+        {DBLP:journals/csur/GamaZBPB14}
+\bibfield{author}{\bibinfo{person}{Jo{\~{a}}o Gama}, \bibinfo{person}{Indre
+  Zliobaite}, \bibinfo{person}{Albert Bifet}, \bibinfo{person}{Mykola
+  Pechenizkiy}, {and} \bibinfo{person}{Abdelhamid Bouchachia}.}
+  \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{A survey on concept drift adaptation}.
+\newblock \bibinfo{journal}{\emph{{ACM} Comput. Surv.}} \bibinfo{volume}{46},
+  \bibinfo{number}{4} (\bibinfo{year}{2014}), \bibinfo{pages}{44:1--44:37}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Guo, Pleiss, Sun, and Weinberger}{Guo
+  et~al\mbox{.}}{2017}]%
+        {guo2017calibration}
+\bibfield{author}{\bibinfo{person}{Chuan Guo}, \bibinfo{person}{Geoff Pleiss},
+  \bibinfo{person}{Yu Sun}, {and} \bibinfo{person}{Kilian~Q Weinberger}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{On calibration of modern neural networks}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 34th International Conference on
+  Machine Learning-Volume 70}}. \bibinfo{pages}{1321--1330}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Hendrycks and Gimpel}{Hendrycks and
+  Gimpel}{2017}]%
+        {DBLP:journals/corr/HendrycksG16c}
+\bibfield{author}{\bibinfo{person}{Dan Hendrycks} {and} \bibinfo{person}{Kevin
+  Gimpel}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{A Baseline for Detecting Misclassified and
+  Out-of-Distribution Examples in Neural Networks}. In
+  \bibinfo{booktitle}{\emph{ICLR}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Hinton and Salakhutdinov}{Hinton and
+  Salakhutdinov}{2006}]%
+        {hinton2006reducing}
+\bibfield{author}{\bibinfo{person}{Geoffrey~E Hinton} {and}
+  \bibinfo{person}{Ruslan~R Salakhutdinov}.} \bibinfo{year}{2006}\natexlab{}.
+\newblock \showarticletitle{Reducing the dimensionality of data with neural
+  networks}.
+\newblock \bibinfo{journal}{\emph{science}} \bibinfo{volume}{313},
+  \bibinfo{number}{5786} (\bibinfo{year}{2006}), \bibinfo{pages}{504--507}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Ho}{Ho}{2005}]%
+        {DBLP:conf/icml/Ho05}
+\bibfield{author}{\bibinfo{person}{Shen{-}Shyang Ho}.}
+  \bibinfo{year}{2005}\natexlab{}.
+\newblock \showarticletitle{A martingale framework for concept change detection
+  in time-varying data streams}. In \bibinfo{booktitle}{\emph{ICML}}.
+  \bibinfo{pages}{321--327}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Hooi and Faloutsos}{Hooi and
+  Faloutsos}{2019}]%
+        {hooi2019branch}
+\bibfield{author}{\bibinfo{person}{Bryan Hooi} {and} \bibinfo{person}{Christos
+  Faloutsos}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Branch and Border: Partition-Based Change Detection
+  in Multivariate Time Series}. In \bibinfo{booktitle}{\emph{Proceedings of the
+  2019 {SIAM} International Conference on Data Mining, {SDM}}}.
+  \bibinfo{pages}{504--512}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Huhtala, K{\"a}rkk{\"a}inen, Porkka, and
+  Toivonen}{Huhtala et~al\mbox{.}}{1999}]%
+        {huhtala1999tane}
+\bibfield{author}{\bibinfo{person}{Yka Huhtala}, \bibinfo{person}{Juha
+  K{\"a}rkk{\"a}inen}, \bibinfo{person}{Pasi Porkka}, {and}
+  \bibinfo{person}{Hannu Toivonen}.} \bibinfo{year}{1999}\natexlab{}.
+\newblock \showarticletitle{TANE: An efficient algorithm for discovering
+  functional and approximate dependencies}.
+\newblock \bibinfo{journal}{\emph{The computer journal}} \bibinfo{volume}{42},
+  \bibinfo{number}{2} (\bibinfo{year}{1999}), \bibinfo{pages}{100--111}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Ienco, Bifet, Pfahringer, and Poncelet}{Ienco
+  et~al\mbox{.}}{2014}]%
+        {DBLP:conf/sac/IencoBPP14}
+\bibfield{author}{\bibinfo{person}{Dino Ienco}, \bibinfo{person}{Albert Bifet},
+  \bibinfo{person}{Bernhard Pfahringer}, {and} \bibinfo{person}{Pascal
+  Poncelet}.} \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Change detection in categorical evolving data
+  streams}. In \bibinfo{booktitle}{\emph{SAC}}. \bibinfo{pages}{792--797}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Ilyas, Markl, Haas, Brown, and
+  Aboulnaga}{Ilyas et~al\mbox{.}}{2004}]%
+        {DBLP:conf/sigmod/IlyasMHBA04}
+\bibfield{author}{\bibinfo{person}{Ihab~F. Ilyas}, \bibinfo{person}{Volker
+  Markl}, \bibinfo{person}{Peter~J. Haas}, \bibinfo{person}{Paul Brown}, {and}
+  \bibinfo{person}{Ashraf Aboulnaga}.} \bibinfo{year}{2004}\natexlab{}.
+\newblock \showarticletitle{{CORDS:} Automatic Discovery of Correlations and
+  Soft Functional Dependencies}. In \bibinfo{booktitle}{\emph{SIGMOD}}.
+  \bibinfo{pages}{647--658}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Jha}{Jha}{2019}]%
+        {DBLP:conf/cav/Jha19}
+\bibfield{author}{\bibinfo{person}{Susmit Jha}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Trust, Resilience and Interpretability of {AI}
+  Models}. In \bibinfo{booktitle}{\emph{Numerical Software Verification - 12th
+  International Workshop, NSV@CAV}}. \bibinfo{pages}{3--25}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Jiang, Kim, Guan, and Gupta}{Jiang
+  et~al\mbox{.}}{2018}]%
+        {DBLP:conf/nips/JiangKGG18}
+\bibfield{author}{\bibinfo{person}{Heinrich Jiang}, \bibinfo{person}{Been Kim},
+  \bibinfo{person}{Melody~Y. Guan}, {and} \bibinfo{person}{Maya~R. Gupta}.}
+  \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{To Trust Or Not To Trust {A} Classifier}. In
+  \bibinfo{booktitle}{\emph{NeurIPS}}. \bibinfo{pages}{5546--5557}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Kang, Raghavan, Bailis, and Zaharia}{Kang
+  et~al\mbox{.}}{2020}]%
+        {DBLP:conf/mlsys/KangRBZ20}
+\bibfield{author}{\bibinfo{person}{Daniel Kang}, \bibinfo{person}{Deepti
+  Raghavan}, \bibinfo{person}{Peter Bailis}, {and} \bibinfo{person}{Matei
+  Zaharia}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Model Assertions for Monitoring and Improving {ML}
+  Models}. In \bibinfo{booktitle}{\emph{{MLSys}}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Karaletsos, Belongie, and
+  R{\"{a}}tsch}{Karaletsos et~al\mbox{.}}{2016}]%
+        {karaletsos2015bayesian}
+\bibfield{author}{\bibinfo{person}{Theofanis Karaletsos},
+  \bibinfo{person}{Serge~J. Belongie}, {and} \bibinfo{person}{Gunnar
+  R{\"{a}}tsch}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{When crowds hold privileges: Bayesian unsupervised
+  representation learning with oracle constraints}. In
+  \bibinfo{booktitle}{\emph{{ICLR}}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Kawahara and Sugiyama}{Kawahara and
+  Sugiyama}{2009}]%
+        {DBLP:conf/sdm/KawaharaS09}
+\bibfield{author}{\bibinfo{person}{Yoshinobu Kawahara} {and}
+  \bibinfo{person}{Masashi Sugiyama}.} \bibinfo{year}{2009}\natexlab{}.
+\newblock \showarticletitle{Change-Point Detection in Time-Series Data by
+  Direct Density-Ratio Estimation}. In \bibinfo{booktitle}{\emph{SDM}}.
+  \bibinfo{pages}{389--400}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Keerthi and Lin}{Keerthi and Lin}{2003}]%
+        {keerthi2003asymptotic}
+\bibfield{author}{\bibinfo{person}{S~Sathiya Keerthi} {and}
+  \bibinfo{person}{Chih-Jen Lin}.} \bibinfo{year}{2003}\natexlab{}.
+\newblock \showarticletitle{Asymptotic behaviors of support vector machines
+  with Gaussian kernel}.
+\newblock \bibinfo{journal}{\emph{Neural computation}} \bibinfo{volume}{15},
+  \bibinfo{number}{7} (\bibinfo{year}{2003}), \bibinfo{pages}{1667--1689}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Kifer, Ben{-}David, and Gehrke}{Kifer
+  et~al\mbox{.}}{2004}]%
+        {DBLP:conf/vldb/KiferBG04}
+\bibfield{author}{\bibinfo{person}{Daniel Kifer}, \bibinfo{person}{Shai
+  Ben{-}David}, {and} \bibinfo{person}{Johannes Gehrke}.}
+  \bibinfo{year}{2004}\natexlab{}.
+\newblock \showarticletitle{Detecting Change in Data Streams}. In
+  \bibinfo{booktitle}{\emph{PVLDB}}. \bibinfo{pages}{180--191}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Koudas, Saha, Srivastava, and
+  Venkatasubramanian}{Koudas et~al\mbox{.}}{2009}]%
+        {koudas2009metric}
+\bibfield{author}{\bibinfo{person}{Nick Koudas}, \bibinfo{person}{Avishek
+  Saha}, \bibinfo{person}{Divesh Srivastava}, {and} \bibinfo{person}{Suresh
+  Venkatasubramanian}.} \bibinfo{year}{2009}\natexlab{}.
+\newblock \showarticletitle{Metric functional dependencies}. In
+  \bibinfo{booktitle}{\emph{ICDE}}. \bibinfo{pages}{1275--1278}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Kriegel, Kr{\"{o}}ger, Schubert, and
+  Zimek}{Kriegel et~al\mbox{.}}{2012}]%
+        {kriegel2012outlier}
+\bibfield{author}{\bibinfo{person}{Hans{-}Peter Kriegel}, \bibinfo{person}{Peer
+  Kr{\"{o}}ger}, \bibinfo{person}{Erich Schubert}, {and}
+  \bibinfo{person}{Arthur Zimek}.} \bibinfo{year}{2012}\natexlab{}.
+\newblock \showarticletitle{Outlier Detection in Arbitrarily Oriented
+  Subspaces}. In \bibinfo{booktitle}{\emph{{ICDM}}}. \bibinfo{pages}{379--388}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Kruse and Naumann}{Kruse and Naumann}{2018}]%
+        {kruse2018efficient}
+\bibfield{author}{\bibinfo{person}{Sebastian Kruse} {and}
+  \bibinfo{person}{Felix Naumann}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Efficient discovery of approximate dependencies}.
+\newblock \bibinfo{journal}{\emph{PVLDB}} \bibinfo{volume}{11},
+  \bibinfo{number}{7} (\bibinfo{year}{2018}), \bibinfo{pages}{759--772}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Kuncheva and Faithfull}{Kuncheva and
+  Faithfull}{2014}]%
+        {DBLP:journals/tnn/KunchevaF14}
+\bibfield{author}{\bibinfo{person}{Ludmila~I. Kuncheva} {and}
+  \bibinfo{person}{William~J. Faithfull}.} \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{{PCA} Feature Extraction for Change Detection in
+  Multidimensional Unlabeled Data}.
+\newblock \bibinfo{journal}{\emph{{IEEE} Trans. Neural Netw. Learning Syst.}}
+  \bibinfo{volume}{25}, \bibinfo{number}{1} (\bibinfo{year}{2014}),
+  \bibinfo{pages}{69--80}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Livshits, Heidari, Ilyas, and
+  Kimelfeld}{Livshits et~al\mbox{.}}{2020}]%
+        {DBLP:journals/corr/abs-2005-08540}
+\bibfield{author}{\bibinfo{person}{Ester Livshits}, \bibinfo{person}{Alireza
+  Heidari}, \bibinfo{person}{Ihab~F. Ilyas}, {and} \bibinfo{person}{Benny
+  Kimelfeld}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Approximate Denial Constraints}.
+\newblock \bibinfo{journal}{\emph{PVLDB}} \bibinfo{volume}{13},
+  \bibinfo{number}{10} (\bibinfo{year}{2020}), \bibinfo{pages}{1682--1695}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Lu, Xu, Liu, Zhou, and Wang}{Lu
+  et~al\mbox{.}}{2019}]%
+        {DBLP:journals/corr/abs-1909-03835}
+\bibfield{author}{\bibinfo{person}{Haochuan Lu}, \bibinfo{person}{Huanlin Xu},
+  \bibinfo{person}{Nana Liu}, \bibinfo{person}{Yangfan Zhou}, {and}
+  \bibinfo{person}{Xin Wang}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Data Sanity Check for Deep Learning Systems via
+  Learnt Assertions}.
+\newblock \bibinfo{journal}{\emph{CoRR}}  \bibinfo{volume}{abs/1909.03835}
+  (\bibinfo{year}{2019}).
+\newblock
+\showeprint[arxiv]{1909.03835}
+
+
+\bibitem[\protect\citeauthoryear{Martin and Glad}{Martin and Glad}{2019}]%
+        {tveten2019tailored}
+\bibfield{author}{\bibinfo{person}{Tveten Martin} {and}
+  \bibinfo{person}{Ingrid~K. Glad}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Online Detection of Sparse Changes in
+  High-Dimensional Data Streams Using Tailored Projections}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1908.02029}}
+  (\bibinfo{year}{2019}).
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Pan and Chen}{Pan and Chen}{1999}]%
+        {DBLP:conf/stoc/PanC99}
+\bibfield{author}{\bibinfo{person}{Victor~Y. Pan} {and}
+  \bibinfo{person}{Zhao~Q. Chen}.} \bibinfo{year}{1999}\natexlab{}.
+\newblock \showarticletitle{The Complexity of the Matrix Eigenproblem}. In
+  \bibinfo{booktitle}{\emph{ACM Symposium on Theory of Computing}}.
+  \bibinfo{pages}{507--516}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Papenbrock, Ehrlich, Marten, Neubert, Rudolph,
+  Sch{\"o}nberg, Zwiener, and Naumann}{Papenbrock et~al\mbox{.}}{2015}]%
+        {papenbrock2015functional}
+\bibfield{author}{\bibinfo{person}{Thorsten Papenbrock}, \bibinfo{person}{Jens
+  Ehrlich}, \bibinfo{person}{Jannik Marten}, \bibinfo{person}{Tommy Neubert},
+  \bibinfo{person}{Jan-Peer Rudolph}, \bibinfo{person}{Martin Sch{\"o}nberg},
+  \bibinfo{person}{Jakob Zwiener}, {and} \bibinfo{person}{Felix Naumann}.}
+  \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Functional dependency discovery: An experimental
+  evaluation of seven algorithms}.
+\newblock \bibinfo{journal}{\emph{PVLDB}} \bibinfo{volume}{8},
+  \bibinfo{number}{10} (\bibinfo{year}{2015}), \bibinfo{pages}{1082--1093}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Pena, de~Almeida, and Naumann}{Pena
+  et~al\mbox{.}}{2019}]%
+        {pena2019discovery}
+\bibfield{author}{\bibinfo{person}{Eduardo~HM Pena}, \bibinfo{person}{Eduardo~C
+  de Almeida}, {and} \bibinfo{person}{Felix Naumann}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Discovery of approximate (and exact) denial
+  constraints}.
+\newblock \bibinfo{journal}{\emph{PVLDB}} \bibinfo{volume}{13},
+  \bibinfo{number}{3} (\bibinfo{year}{2019}), \bibinfo{pages}{266--278}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Qahtan, Tang, Ouzzani, Cao, and
+  Stonebraker}{Qahtan et~al\mbox{.}}{2020}]%
+        {qahtan2020pattern}
+\bibfield{author}{\bibinfo{person}{Abdulhakim Qahtan}, \bibinfo{person}{Nan
+  Tang}, \bibinfo{person}{Mourad Ouzzani}, \bibinfo{person}{Yang Cao}, {and}
+  \bibinfo{person}{Michael Stonebraker}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Pattern functional dependencies for data cleaning}.
+\newblock \bibinfo{journal}{\emph{PVLDB}} \bibinfo{volume}{13},
+  \bibinfo{number}{5} (\bibinfo{year}{2020}), \bibinfo{pages}{684--697}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Qahtan, Alharbi, Wang, and Zhang}{Qahtan
+  et~al\mbox{.}}{2015}]%
+        {DBLP:conf/kdd/QahtanAWZ15}
+\bibfield{author}{\bibinfo{person}{Abdulhakim~Ali Qahtan},
+  \bibinfo{person}{Basma Alharbi}, \bibinfo{person}{Suojin Wang}, {and}
+  \bibinfo{person}{Xiangliang Zhang}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{A PCA-Based Change Detection Framework for
+  Multidimensional Data Streams: Change Detection in Multidimensional Data
+  Streams}. In \bibinfo{booktitle}{\emph{SIGKDD}}. \bibinfo{pages}{935--944}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Ribeiro, Singh, and Guestrin}{Ribeiro
+  et~al\mbox{.}}{2016}]%
+        {DBLP:conf/kdd/Ribeiro0G16}
+\bibfield{author}{\bibinfo{person}{Marco~T{\'{u}}lio Ribeiro},
+  \bibinfo{person}{Sameer Singh}, {and} \bibinfo{person}{Carlos Guestrin}.}
+  \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{``Why Should {I} Trust You?'': Explaining the
+  Predictions of Any Classifier}. In \bibinfo{booktitle}{\emph{SIGKDD}}.
+  \bibinfo{pages}{1135--1144}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Rumelhart, Hinton, and Williams}{Rumelhart
+  et~al\mbox{.}}{1985}]%
+        {rumelhart1985learning}
+\bibfield{author}{\bibinfo{person}{David~E Rumelhart},
+  \bibinfo{person}{Geoffrey~E Hinton}, {and} \bibinfo{person}{Ronald~J
+  Williams}.} \bibinfo{year}{1985}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Learning internal representations by error
+  propagation}}.
+\newblock \bibinfo{type}{{T}echnical {R}eport}.
+  \bibinfo{institution}{California Univ San Diego La Jolla Inst for Cognitive
+  Science}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Rutkowski, Jaworski, Pietruczuk, and
+  Duda}{Rutkowski et~al\mbox{.}}{2015}]%
+        {DBLP:journals/tnn/RutkowskiJPD15}
+\bibfield{author}{\bibinfo{person}{Leszek Rutkowski}, \bibinfo{person}{Maciej
+  Jaworski}, \bibinfo{person}{Lena Pietruczuk}, {and} \bibinfo{person}{Piotr
+  Duda}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{A New Method for Data Stream Mining Based on the
+  Misclassification Error}.
+\newblock \bibinfo{journal}{\emph{{IEEE} Trans. Neural Netw. Learning Syst.}}
+  \bibinfo{volume}{26}, \bibinfo{number}{5} (\bibinfo{year}{2015}),
+  \bibinfo{pages}{1048--1059}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Saria and Subbaswamy}{Saria and
+  Subbaswamy}{2019}]%
+        {DBLP:journals/corr/abs-1904-07204}
+\bibfield{author}{\bibinfo{person}{Suchi Saria} {and} \bibinfo{person}{Adarsh
+  Subbaswamy}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Tutorial: Safe and Reliable Machine Learning}.
+\newblock \bibinfo{journal}{\emph{CoRR}}  \bibinfo{volume}{abs/1904.07204}
+  (\bibinfo{year}{2019}).
+\newblock
+\showeprint[arxiv]{1904.07204}
+
+
+\bibitem[\protect\citeauthoryear{Schelter, Rukat, and Bie{\ss}mann}{Schelter
+  et~al\mbox{.}}{2020}]%
+        {DBLP:conf/sigmod/SchelterRB20}
+\bibfield{author}{\bibinfo{person}{Sebastian Schelter}, \bibinfo{person}{Tammo
+  Rukat}, {and} \bibinfo{person}{Felix Bie{\ss}mann}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Learning to Validate the Predictions of Black Box
+  Classifiers on Unseen Data}. In \bibinfo{booktitle}{\emph{SIGMOD}}.
+  \bibinfo{pages}{1289--1299}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Sch{\"o}lkopf, Smola, Bach,
+  et~al\mbox{.}}{Sch{\"o}lkopf et~al\mbox{.}}{2002}]%
+        {scholkopf2002learning}
+\bibfield{author}{\bibinfo{person}{Bernhard Sch{\"o}lkopf},
+  \bibinfo{person}{Alexander~J Smola}, \bibinfo{person}{Francis Bach},
+  {et~al\mbox{.}}} \bibinfo{year}{2002}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Learning with kernels: support vector
+  machines, regularization, optimization, and beyond}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Sethi and Kantardzic}{Sethi and
+  Kantardzic}{2017}]%
+        {DBLP:journals/eswa/SethiK17}
+\bibfield{author}{\bibinfo{person}{Tegjyot~Singh Sethi} {and}
+  \bibinfo{person}{Mehmed~M. Kantardzic}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{On the reliable detection of concept drift from
+  streaming unlabeled data}.
+\newblock \bibinfo{journal}{\emph{Expert Syst. Appl.}}  \bibinfo{volume}{82}
+  (\bibinfo{year}{2017}), \bibinfo{pages}{77--99}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Sethi, Kantardzic, and Arabmakki}{Sethi
+  et~al\mbox{.}}{2016}]%
+        {DBLP:conf/iri/SethiKA16}
+\bibfield{author}{\bibinfo{person}{Tegjyot~Singh Sethi},
+  \bibinfo{person}{Mehmed~M. Kantardzic}, {and} \bibinfo{person}{Elaheh
+  Arabmakki}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Monitoring Classification Blindspots to Detect
+  Drifts from Unlabeled Data}. In \bibinfo{booktitle}{\emph{{IEEE}
+  International Conference on Information Reuse and Integration, {IRI}}}.
+  \bibinfo{pages}{142--151}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Song and Chen}{Song and Chen}{2011}]%
+        {song2011differential}
+\bibfield{author}{\bibinfo{person}{Shaoxu Song} {and} \bibinfo{person}{Lei
+  Chen}.} \bibinfo{year}{2011}\natexlab{}.
+\newblock \showarticletitle{Differential dependencies: Reasoning and
+  discovery}.
+\newblock \bibinfo{journal}{\emph{ACM Transactions on Database Systems (TODS)}}
+  \bibinfo{volume}{36}, \bibinfo{number}{3} (\bibinfo{year}{2011}),
+  \bibinfo{pages}{1--41}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Song, Wu, Jermaine, and Ranka}{Song
+  et~al\mbox{.}}{2007}]%
+        {DBLP:conf/kdd/SongWJR07}
+\bibfield{author}{\bibinfo{person}{Xiuyao Song}, \bibinfo{person}{Mingxi Wu},
+  \bibinfo{person}{Christopher~M. Jermaine}, {and} \bibinfo{person}{Sanjay
+  Ranka}.} \bibinfo{year}{2007}\natexlab{}.
+\newblock \showarticletitle{Statistical change detection for multi-dimensional
+  data}. In \bibinfo{booktitle}{\emph{SIGKDD}}. \bibinfo{pages}{667--676}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Souza, Silva, Gama, and Batista}{Souza
+  et~al\mbox{.}}{2015}]%
+        {souzaSDM:2015}
+\bibfield{author}{\bibinfo{person}{V.~M.~A. Souza}, \bibinfo{person}{D.~F.
+  Silva}, \bibinfo{person}{J. Gama}, {and} \bibinfo{person}{G.~E. A. P.~A.
+  Batista}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Data Stream Classification Guided by Clustering on
+  Nonstationary Environments and Extreme Verification Latency}. In
+  \bibinfo{booktitle}{\emph{SDM}}. \bibinfo{pages}{873--881}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Sztyler and Stuckenschmidt}{Sztyler and
+  Stuckenschmidt}{2016}]%
+        {sztyler2016onbody}
+\bibfield{author}{\bibinfo{person}{Timo Sztyler} {and} \bibinfo{person}{Heiner
+  Stuckenschmidt}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{On-body Localization of Wearable Devices: An
+  Investigation of Position-Aware Activity Recognition}. In
+  \bibinfo{booktitle}{\emph{PerCom}}. \bibinfo{pages}{1--9}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Tax and M{\"{u}}ller}{Tax and
+  M{\"{u}}ller}{2003}]%
+        {DBLP:conf/icann/TaxM03}
+\bibfield{author}{\bibinfo{person}{David M.~J. Tax} {and}
+  \bibinfo{person}{Klaus{-}Robert M{\"{u}}ller}.}
+  \bibinfo{year}{2003}\natexlab{}.
+\newblock \showarticletitle{Feature Extraction for One-Class Classification}.
+  In \bibinfo{booktitle}{\emph{ICANN/ICONIP}}. \bibinfo{pages}{342--349}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Tiwari, Dutertre, Jovanovic, de~Candia,
+  Lincoln, Rushby, Sadigh, and Seshia}{Tiwari et~al\mbox{.}}{2014}]%
+        {DBLP:conf/hicons/TiwariDJCLRSS14}
+\bibfield{author}{\bibinfo{person}{Ashish Tiwari}, \bibinfo{person}{Bruno
+  Dutertre}, \bibinfo{person}{Dejan Jovanovic}, \bibinfo{person}{Thomas de
+  Candia}, \bibinfo{person}{Patrick Lincoln}, \bibinfo{person}{John~M. Rushby},
+  \bibinfo{person}{Dorsa Sadigh}, {and} \bibinfo{person}{Sanjit~A. Seshia}.}
+  \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Safety envelope for security}. In
+  \bibinfo{booktitle}{\emph{HiCoNS}}. \bibinfo{pages}{85--94}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Tsymbal}{Tsymbal}{2004}]%
+        {tsymbal2004problem}
+\bibfield{author}{\bibinfo{person}{Alexey Tsymbal}.}
+  \bibinfo{year}{2004}\natexlab{}.
+\newblock \showarticletitle{The problem of concept drift: definitions and
+  related work}.
+\newblock \bibinfo{journal}{\emph{Computer Science Department, Trinity College
+  Dublin}} \bibinfo{volume}{106}, \bibinfo{number}{2} (\bibinfo{year}{2004}),
+  \bibinfo{pages}{58}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Tsymbal, Pechenizkiy, Cunningham, and
+  Puuronen}{Tsymbal et~al\mbox{.}}{2006}]%
+        {DBLP:conf/cbms/TsymbalPCP06}
+\bibfield{author}{\bibinfo{person}{Alexey Tsymbal}, \bibinfo{person}{Mykola
+  Pechenizkiy}, \bibinfo{person}{Padraig Cunningham}, {and}
+  \bibinfo{person}{Seppo Puuronen}.} \bibinfo{year}{2006}\natexlab{}.
+\newblock \showarticletitle{Handling Local Concept Drift with Dynamic
+  Integration of Classifiers: Domain of Antibiotic Resistance in Nosocomial
+  Infections}. In \bibinfo{booktitle}{\emph{{IEEE} International Symposium on
+  Computer-Based Medical Systems {(CBMS})}}. \bibinfo{pages}{679--684}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Turchini, Seidenari, and Del~Bimbo}{Turchini
+  et~al\mbox{.}}{2017}]%
+        {turchini2017convex}
+\bibfield{author}{\bibinfo{person}{Francesco Turchini},
+  \bibinfo{person}{Lorenzo Seidenari}, {and} \bibinfo{person}{Alberto
+  Del~Bimbo}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Convex polytope ensembles for spatio-temporal
+  anomaly detection}. In \bibinfo{booktitle}{\emph{International Conference on
+  Image Analysis and Processing}}. \bibinfo{pages}{174--184}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Tveten}{Tveten}{2019}]%
+        {tveten2019principal}
+\bibfield{author}{\bibinfo{person}{Martin Tveten}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Which principal components are most sensitive to
+  distributional changes?}
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1905.06318}}
+  (\bibinfo{year}{2019}).
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Vapnik, Golowich, and Smola}{Vapnik
+  et~al\mbox{.}}{1997}]%
+        {vapnik1997support}
+\bibfield{author}{\bibinfo{person}{Vladimir Vapnik}, \bibinfo{person}{Steven~E
+  Golowich}, {and} \bibinfo{person}{Alex~J Smola}.}
+  \bibinfo{year}{1997}\natexlab{}.
+\newblock \showarticletitle{Support vector method for function approximation,
+  regression estimation and signal processing}. In
+  \bibinfo{booktitle}{\emph{NeurIPS}}. \bibinfo{pages}{281--287}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Varshney}{Varshney}{2019}]%
+        {DBLP:journals/crossroads/Varshney19}
+\bibfield{author}{\bibinfo{person}{Kush~R. Varshney}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Trustworthy machine learning and artificial
+  intelligence}.
+\newblock \bibinfo{journal}{\emph{{ACM} Crossroads}} \bibinfo{volume}{25},
+  \bibinfo{number}{3} (\bibinfo{year}{2019}), \bibinfo{pages}{26--29}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Varshney and Alemzadeh}{Varshney and
+  Alemzadeh}{2017}]%
+        {DBLP:journals/bigdata/VarshneyA17}
+\bibfield{author}{\bibinfo{person}{Kush~R. Varshney} {and}
+  \bibinfo{person}{Homa Alemzadeh}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{On the Safety of Machine Learning: Cyber-Physical
+  Systems, Decision Sciences, and Data Products}.
+\newblock \bibinfo{journal}{\emph{Big Data}} \bibinfo{volume}{5},
+  \bibinfo{number}{3} (\bibinfo{year}{2017}), \bibinfo{pages}{246--255}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Wang and Abraham}{Wang and Abraham}{2015}]%
+        {DBLP:journals/corr/WangA15}
+\bibfield{author}{\bibinfo{person}{Heng Wang} {and} \bibinfo{person}{Zubin
+  Abraham}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Concept Drift Detection for Imbalanced Stream
+  Data}.
+\newblock \bibinfo{journal}{\emph{CoRR}}  \bibinfo{volume}{abs/1504.01044}
+  (\bibinfo{year}{2015}).
+\newblock
+\showeprint[arxiv]{1504.01044}
+
+
+\bibitem[\protect\citeauthoryear{Yan, Schulte, Zhang, Wang, and Cheng}{Yan
+  et~al\mbox{.}}{2020}]%
+        {DBLP:conf/sigmod/YanSZWC20}
+\bibfield{author}{\bibinfo{person}{Jing~Nathan Yan}, \bibinfo{person}{Oliver
+  Schulte}, \bibinfo{person}{Mohan Zhang}, \bibinfo{person}{Jiannan Wang},
+  {and} \bibinfo{person}{Reynold Cheng}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{{SCODED:} Statistical Constraint Oriented Data
+  Error Detection}. In \bibinfo{booktitle}{\emph{SIGMOD}}.
+  \bibinfo{pages}{845--860}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Zhang, Guo, and Rekatsinas}{Zhang
+  et~al\mbox{.}}{2020}]%
+        {DBLP:conf/sigmod/ZhangGR20}
+\bibfield{author}{\bibinfo{person}{Yunjia Zhang}, \bibinfo{person}{Zhihan Guo},
+  {and} \bibinfo{person}{Theodoros Rekatsinas}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{A Statistical Perspective on Discovering Functional
+  Dependencies in Noisy Data}. In \bibinfo{booktitle}{\emph{SIGMOD}}.
+  \bibinfo{pages}{861--876}.
+\newblock
+
+
+\end{thebibliography}

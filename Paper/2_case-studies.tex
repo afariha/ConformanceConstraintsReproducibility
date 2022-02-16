@@ -1,0 +1,88 @@
+%!TEX root = paper.tex
+% \section{Case Studies}
+
+\looseness-1 Like other data-profiling primitives, \dis have general
+applicability in understanding and describing datasets. However, their true
+power lies in quantifying the degree of a tuple's non-conformance with respect
+to a reference dataset. Within the scope of this paper, we focus on two case
+studies
+%in particular 
+to motivate our work.
+%: trusted machine learning and data drift. 
+We provide an extensive evaluation over these applications in
+Section~\ref{sec:experiments}.
+
+% , which can be used to determine whether the prediction of a
+% learned model can be trusted on a new serving
+% tuple.Furthermore, . 
+
+\smallskip
+
+\looseness-1 \paragraph{Trusted machine learning (TML)} refers to the problem
+of quantifying trust in the inference made by a machine-learned model on a new
+serving tuple~~\cite{DBLP:conf/hicons/TiwariDJCLRSS14,
+DBLP:journals/crossroads/Varshney19, DBLP:journals/corr/abs-1904-07204,
+DBLP:conf/kdd/Ribeiro0G16, DBLP:conf/nips/JiangKGG18}.
+%
+\ignore{
+This is particularly useful in
+case of extreme verification latency~\cite{souzaSDM:2015}, where ground-truth
+outputs for new serving tuples are not immediately available to evaluate the
+performance of a learned model, when auditing models for trustworthiness, and
+in privacy-preserving applications where even the model's predictions cannot be
+shared.
+}
+%
+When a model is trained using a dataset, the \dis for that dataset specify a
+safety envelope~\cite{DBLP:conf/hicons/TiwariDJCLRSS14} that characterizes the
+tuples for which the model is expected to make trustworthy predictions. If a
+serving tuple falls outside the safety envelope (violates the \dis), then the
+model is likely to produce an untrustworthy inference. Intuitively, the higher
+the violation, the lower the trust. Some classifiers produce a confidence
+measure along with the class prediction, typically by applying a softmax
+function to the raw numeric prediction values. However, such confidence
+measures are not well-calibrated~\cite{DBLP:conf/nips/JiangKGG18,
+guo2017calibration}, and, therefore, cannot be reliably used as a measure of
+trust in the prediction. Additionally, a similar mechanism is not available for
+inferences made by regression models.
+
+\looseness-1 In the context of TML, we formalize the notion of \emph{\nc
+tuples}, on which the prediction may be untrustworthy. We establish that \dis
+provide a sound and complete procedure for detecting \nc tuples, which
+indicates that the search for \dis should be guided by the class of models
+considered by the corresponding learning system (Section~\ref{sec:di-for-tml}).
+
+% Since our
+% proof of this result is non-constructive, we present a second result that
+% establishes sufficient, but not necessary, conditions for solving it
+% . 
+
+
+\smallskip
+
+\paragraph{Data drift}~\cite{DBLP:conf/kdd/QahtanAWZ15,
+DBLP:journals/tnn/KunchevaF14, DBLP:journals/csur/GamaZBPB14,
+DBLP:journals/jss/BarddalGEP17} specifies a significant change in a dataset
+with respect to a reference dataset, which typically requires that systems be
+updated and models retrained.
+% Aggregating tuple-level non-conformances over a
+% dataset gives us a \emph{dataset-level} non-conformance, which is an effective
+% measurement of data drift.
+To quantify how much a dataset $D'$ drifted from a reference dataset $D$, our
+three-step approach is: (1)~compute \dis for $D$, (2)~evaluate the \invariants
+on all tuples in $D'$ and compute their violations (degrees of
+non-conformance), and (3)~finally, aggregate the tuple-level violations to get
+a dataset-level violation. If all tuples in $D'$ satisfy the \invariants, then
+we have no evidence of drift. Otherwise, the aggregated violation serves as the
+drift quantity.
+
+\smallskip
+
+While we focus on these two applications here, we mention other applications of
+\dis in \appOrTechRep.
+
+
+
+
+
+

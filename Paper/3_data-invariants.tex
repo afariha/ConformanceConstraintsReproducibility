@@ -1,0 +1,380 @@
+%!TEX root = paper.tex
+%% \section{\DIs}
+
+\def\Inv{\mathtt{Inv}}
+\def\Dom{\mathtt{Dom}}
+\def\coDom{\mathtt{coDom}}
+\def\DDom{\mathbf{Dom}}
+\def\CC{\mathcal{C}}
+\def\Real{{\mathbb{R}}}
+%\def\dist{{\mathtt{qmem}}}
+
+\def\Bool{{\mathtt{Bool}}}
+\def\true{{\mathtt{True}}}
+\def\false{{\mathtt{False}}}
+\def\vecw{{\vec{w}}}
+\def\vecv{{\vec{v}}}
+\def\lb{{\mathtt{lb}}}
+\def\ub{{\mathtt{ub}}}
+\def\atomic{{atomic}}
+\def\Atomic{{Atomic}}
+%\def\M{{\infty}}
+%\def\Conj{{\varphi}}
+%\def\Disj{{\Phi}}
+\newcommand{\semq}[1]{{[\![{#1}]\!]}}
+%\newcommand\avg[1]{{\overline{#1}}}
+\newcommand\avg[1]{{\mathtt{\mu}}(#1)}
+\newcommand\sign[1]{{\mathtt{sign}({#1})}}
+\newcommand\delF[2]{{\Delta{#1}({#2})}}
+\newcommand\stddev[1]{{\mathtt{\sigma}}(#1)}
+\def\monthy{M}
+
+
+In this section, 
+%we define \dis that allow us to capture complex arithmetic dependencies involving numerical attributes of a dataset. 
+we first provide the general definition of \dis. Then we propose a language for
+representing them. Finally, we define quantitative semantics over \dis, which
+allows us to quantify their violation.
+
+% We present one possible \emph{language} for representing \dis,
+% and attach a \emph{quantitative semantics} to it.
+% The quantitative semantics, intuitively, computes the degree of
+% \invariant violation on data.
+%Finally, we provide a principle for synthesizing effective \dis. 
+% Finally, we discuss how we prioritize
+% \invariants during quantitative semantics computation based on their
+%effectiveness.
+
+\smallskip
+% \noindent \textbf{tuple, attribute, and Dataset.}
+
+\looseness-1
+\paragraph{Basic notation.}
+%
+We use $\mathcal{R} (A_1, A_2, \dots, A_m)$ to denote a relation schema where
+$A_i$ denotes the $i^{th}$ attribute of $\mathcal{R}$. We use $\Dom_i$ to
+denote the domain of attribute $A_i$. Then the set ${\DDom}^m=\Dom_1\times
+\cdots\times \Dom_m$ specifies the domain of all possible tuples. We use $t
+\in\DDom^m$ to denote a tuple in the schema $\mathcal{R}$. A dataset
+$D\subseteq {\DDom}^m$ is a specific instance of the schema $\mathcal{R}$. For
+ease of notation, we assume some order of tuples in $D$ and we use $t_i \in D$
+to refer to the $i^{th}$ tuple and $t_i.A_j \in \Dom_j$ to denote the value of
+the $j^{th}$ attribute of $t_i$.
+
+\ignore{
+\paragraph{Tuple, Dataset, and Attribute.} Let $\Dom_1, \Dom_2, \ldots, \Dom_n$
+denote some $n$ domains for values. We fix the set $\Dom_1\times \cdots\times
+\Dom_n$ (written as ${\DDom}^m$) as the domain of all {\em{tuples}}. Each
+\emph{tuple} $d\in\DDom^m$ is an $n$-tuple, where each component of the tuple
+is an {\em{attribute}}.\footnote{\scriptsize{In this work, we use the term
+``attribute'' to denote a single attribute.}} We use $A_1,\ldots,x_n$ to denote
+the names of these $n$ attributes. We use $d_{x_j}\in \Dom_j$ to denote the
+value of the $j^{th}$ attribute of $d$. A {\em{dataset}} $D\subseteq {\DDom}^m$
+is a sequence of tuples, where the $i^{th}$ tuple is denoted using $d^{(i)}$.
+\endignore
+}
+
+%We differentiate between two types of attributes in a dataset, namely
+%categorical and numerical. An attribute with domain $\Dom_i$ is categorical if
+%$\Dom_i$ is a finite discrete set with small (e.g., up to 50) cardinality. The
+%domain of a numerical attribute is the set of numbers. 
+
+% \sloppy
+% \begin{definition}[\Di]\label{def:di}
+%      %
+%      A \di for a dataset $D \,{\subseteq}\, {\DDom}^m$ is another
+%      dataset $\Inv \,{\subseteq}\, {\DDom}^m$ s.t. $D - {D'} \,{\subseteq}\,
+%      \Inv$, and $\frac{|D'|}{|D|} \le \delta$.
+%      %
+% \end{definition}
+
+\ignore{
+\smallskip
+\looseness-1 We start with a \emph{strict} definition of \dis, and then explain how it generalizes to account for noise in the data.
+% 
+\begin{definition}[\Di (strict)]\label{def:di}
+     %
+     A \di for a dataset $D \,{\subseteq}\, {\DDom}^m$ is a formula $\Phi:
+     \DDom^m \mapsto \{\true,\false\}$ such that $\forall t\in D,
+     \Phi(t) = \true$.
+     %
+\end{definition}
+% 
+
+\looseness-1
+A \di ($\Phi$) characterizes a set of allowable or conforming tuples and is
+expressed through a \emph{conformance language} (Section~\ref{sec:cl}). We write
+$\Phi(t)$ and $\neg\Phi(t)$ to denote that $t$ satisfies and violates the
+\invariant $\Phi$, respectively. In practice, because of noise, some tuples in
+$D$ may violate a \invariant. To account for noise, we relax the definition of
+\di as follows.
+\endignore}
+% %
+% \looseness-1 We start with a formal definition of \dis, which is a formula
+% expressed in a \emph{conformance language} (Section~\ref{sec:cl}),
+% that is satisfied by almost all tuples in $D$.
+
+\smallskip
+% \noindent \textbf{tuple, attribute, and Dataset.}
+
+\looseness-1 \paragraph{\Di.} A \di $\Phi$ characterizes a set of allowable or
+conforming tuples and is expressed through a \emph{conformance language}
+(Section~\ref{sec:cl}). We write $\Phi(t)$ and $\neg\Phi(t)$ to denote that $t$
+satisfies and violates $\Phi$, respectively.
+
+\begin{definition}[\Di]\label{def:di2}
+     %
+     A \di for a dataset $D \,{\subseteq}\, {\DDom}^m$ is a formula
+     $\Phi: {\DDom}^m \mapsto \{\true,\false\}$ such that $|\{t \in D \mid
+     \neg\Phi(t)\}| \ll |D|$.
+	 %
+\end{definition}
+% 
+The set $\{t \in D \mid \neg\Phi(t)\}$ denotes atypical tuples in $D$ that do
+not satisfy the \di $\Phi$. In our work, we do not need to know the set of
+atypical tuples, nor do we need to purge the atypical tuples from the dataset.
+Our techniques derive \invariants in ways that ensure there are very few
+atypical tuples (Section~\ref{sec:synth-data-inv}). 
+
+
+\subsection{Conformance Language}\label{sec:cl}
+%
+\looseness-1 \paragraph{\View.} A central concept in our conformance language
+is \linebreak \emph{\view}. Intuitively, a \view is a derived attribute that
+specifies a ``lens'' through which we look at the tuples. More formally, a
+\view is a function $F: \DDom^m \mapsto\Real$ that maps a tuple $t\in\DDom^m$
+to a real number $F(t) \in \Real$. In our language for \dis, we only consider
+\views that correspond to linear combinations of the numerical attributes of a
+dataset. Specifically, to define a \view, we need a set of numerical
+coefficients for all attributes of the dataset and the \view is defined as a
+sum over the attributes, weighted by their corresponding coefficients. We extend
+a projection $F$ to a dataset $D$ by defining $F(D)$ to be the sequence of
+reals obtained by applying $F$ on each tuple in $D$ individually.
+
+\smallskip
+
+{
+%\setlength{\abovedisplayskip}{0pt}
+%\setlength{\belowdisplayskip}{0pt}
+\paragraph{Grammar.} Our language for \dis consists of formulas
+$\Phi$ generated by the following grammar:
+%
+{
+\begin{eqnarray*}
+    \phi & := & \lb \leq F(\vec{A}) \leq \ub \; \mid\; \wedge(\phi,\ldots,\phi)
+    \\[-0.3em]
+    \psi_A & := & \vee(\;(A = c_1) \maxand \phi,\; (A = c_2) \maxand \phi, \;\ldots)
+    \\[-0.3em]
+    \Psi & := & \psi_A \; \mid \; \wedge(\psi_{A_1}, \psi_{A_2}, \ldots)
+	\\[-0.3em]
+    \Phi & := & \phi  \;\mid\; \Psi
+\end{eqnarray*}
+}
+%
+% The language consists of
+% (1)~equality constraints $A_j = c_j$ where $A_j$ is an attribute and $c_j \in \Dom_j$ is a concrete value;
+% (2)~bounded \view constraints $\lb \leq F(\vec{A}) \leq \ub$ where
+%     $F$ is a \view on $\DDom^m$, $\vec{A}$ is the tuple of formal
+%     parameters $(A_1, A_2, \ldots, A_m)$, and $\lb, \ub \in \Real$ are reals; and
+% (3)~their conjunctions ($\wedge$) and disjunctions ($\vee$).
+%   %
+  %
+\looseness-1 
+\noindent 
+The language consists of (1)~bounded constraints $\lb \leq F(\vec{A})\leq \ub$
+where $F$ is a \view on $\DDom^m$, $\vec{A}$ is the tuple of formal parameters
+$(A_1, A_2, \ldots, A_m)$, and $\lb, \ub \in \Real$ are reals; (2)~equality
+constraints $A = c$ where $A$ is an attribute and $c$ is a constant in
+$A$'s domain; and (3)~operators ($\maxand$, $\wedge$, and $\vee$,) that connect
+the constraints.
+}
+%where the first two are intuitively conjunctive and  and $\wedge$ are two conjunction operators and $\vee$ is a disjunctions ($\vee$).
+  % conjunction $\wedge$ and disjunction $\vee$ operators are variable arity operators.
+Intuitively, $\maxand$ is a switch operator that specifies which \invariant $\phi$
+applies based on the value of the attribute $A$, $\wedge$ denotes conjunction,
+and $\vee$ denotes disjunction.
+% $\vee$ and $\wedge$ are the usual Boolean operators. We allow an
+% equality $x = c$ to be part of a \di only when $x$ is categorical.
+Formulas generated by $\phi$ and $\Psi$ are called {\em{simple \invariants}}
+and {\em{compound \invariants}}, respectively. Note that a formula generated by
+$\psi_A$ only allows equality constraints on a single attribute, namely $A$,
+among all the disjuncts.
+% Then $\Psi$ generates a
+% \emph{compound \invariant} which is a conjunction over a set of disjunctive
+% \invariants (on different attributes). Finally, $\Phi$ gives either a
+% conjunctive \invariant or a compound \invariant.
+
+\begin{example}\label{ex:constraints}
+    Consider the dataset $D$ consisting of the first four tuples  $\{t_1, t_2, t_3, t_4\}$ of Fig.~\ref{fig:flights}.
+    A simple \invariant for $D$ is:
+	{
+	$$
+    \phi_1: -5\leq \mathtt{AT} - \mathtt{DT} - \mathtt{DUR} \leq 5.
+	$$
+	}
+	%
+    Here, the projection ${F(\vec{A})} = \mathtt{AT} - \mathtt{DT} - \mathtt{DUR}$, with attribute coefficients
+    $\langle 1, - 1, -1 \rangle$, $\lb = {-}5$, and $\ub = 5$. A compound
+    \invariant is:
+	%
+	{
+	\begin{align*}
+     \psi_2:   \mathtt{\monthy} &= \text{``May''}  \maxand -2 \leq \mathcolorbox{lightgray}{\mathtt{AT} - \mathtt{DT} - \mathtt{DUR}} \leq 0 \\[-0.4em]
+     \vee \;\; \mathtt{\monthy} &= \text{``June''} \maxand \phantom{-}0  \leq \mathcolorbox{lightgray}{\mathtt{AT} - \mathtt{DT} - \mathtt{DUR}} \leq 5\\[-0.4em]
+     \vee \;\; \mathtt{\monthy} &= \text{``July''} \, \maxand {-}5 \leq \mathcolorbox{lightgray}{\mathtt{AT} - \mathtt{DT} - \mathtt{DUR}} \leq 0
+	\end{align*}
+	}
+	 %
+     For ease of exposition, we assume that all times are converted to minutes
+     (e.g., \texttt{06:10} $= 6 \times 60 + 10 = 370$) and $\monthy$ denotes
+     the departure month, extracted from $Departure$ $Date$.
+	 %
+\end{example}
+
+Note that arithmetic expressions that specify linear combination of numerical
+attributes (highlighted above) are disallowed in denial
+constraints~\cite{DBLP:journals/pvldb/ChuIP13} which only allow raw attributes
+and constants (more details are in \appOrTechRep).
+
+
+
+
+\subsection{Quantitative Semantics}\label{quant-sem}
+
+\looseness-1 \Dis have a natural Boolean semantics: a tuple either satisfies a
+\invariant or it does not. However, Boolean semantics is of limited use in
+practice, because it does not quantify the degree of \invariant violation. We
+interpret \dis using a quantitative semantics, which quantifies violations, and
+% to handle noisy data.
+% This is important because data can be noisy and
+%Quantitative semantics has the additional benefit that it 
+reacts to noise more gracefully than Boolean semantics.
+
+%Given a formula $\Phi$,
+% and a tuple $d$,
+The quantitative semantics $\semq{\Phi}(t)$ is a measure of the violation of
+$\Phi$ on a tuple $t$---with a value of $0$ indicating no violation and a value
+greater than 0 indicating some violation. In Boolean semantics, if $\Phi(t)$ is
+$\true$, then $\semq{\Phi}(t)$ will be $0$; and if $\Phi(t)$ is $\false$, then
+$\semq{\Phi}(t)$ will be $1$. Formally, $\semq{\Phi}$ is a mapping from
+$\DDom^m$ to $[0,1]$.
+
+\smallskip
+
+\noindent\emph{Quantitative semantics of simple \invariants.} 
+%
+\revisethree{We build upon $\epsilon$-insen\-sitive loss~\cite{vapnik1997support}
+to define the quantitative semantics of simple \invariants, where the bounds
+$\lb$ and $\ub$ define the $\epsilon$-insensitive
+zone:}\footnote{\revisethree{For a target value $y$, predicted value $\hat{y}$,
+and a parameter $\epsilon$, the $\epsilon$-insensitive loss is $0$ if $|y -
+\hat{y}| < \epsilon$ and $|y - \hat{y}| - \epsilon$ otherwise.
+% $\epsilon$-insensitive loss is defined by $
+% %
+%         \begin{cases}
+%         0, & \text{if } |y - \hat{y}| < \epsilon\\
+%         |y - \hat{y}| - \epsilon, & \text{otherwise}
+%         \end{cases}
+%   $
+}}\label{fn1}
+%
+\begin{align*}
+    \semq{\lb\leq F(\vec{A})\leq \ub}(t) &:= \eta(\alpha \cdot \max(0, F(t)-\ub, \lb - F(t)))
+    \\
+    \semq{\wedge(\phi_1,\ldots,\phi_K)}(t) &:= \textstyle\sum_{k}^{K} \gamma_k \cdot \semq{\phi_k}(t)
+\end{align*}
+%
+Below, we describe the parameters of the quantitative semantics, and provide further details on them in \appOrTechRep.
+% The quantitative semantics uses the following parameters:\footnote{More details on system parameters are in \appOrTechRep.}
+% \begin{itemize}
+%   \item a \emph{scaling factor} $\alpha\in\Real^+$,
+%   \item a \emph{normalization function} $\eta(.): \Real\mapsto [0,1]$, and
+%   \item \emph{importance factors} $\gamma_k \in \Real^+$ s.t. $\sum \gamma_k = 1$.
+% \end{itemize}
+% %and $\gamma_i$'s---which are non-negative real numbers whose sum is $1$---denote \emph{importance factors}.
+% We discuss these parameters next.
+
+\smallskip 
+% \sloppy \noindent \textbf{Scaling factor $\alpha$.}
+\paragraph{Scaling factor $\alpha\in\Real^+$.}\\ \Views are unconstrained
+functions and different \views can map the same tuple to vastly different
+values. We use a scaling factor $\alpha$ to standardize the values computed by
+a \view $F$, and to bring the values of different \views to the same comparable
+scale. The scaling factor is automatically computed as the inverse of the
+standard deviation, $\alpha = \tfrac{1}{\stddev{F(D)}}$. 
+We set $\alpha$ to a large positive number when $\stddev{F(D)}$ = $0$.
+
+% A typical choice---inspired from the classical z-score normalization---is the inverse of standard deviation
+% of $F(D)$, i.e., $1/\stddev{F(D)}$.\footnote{\scriptsize{When $\stddev{F(D)}$ = $0$, we use a large positive number $\M$ as the scaling factor.}}
+
+\smallskip
+% \sloppy \noindent \textbf{Normalization function $\eta$.}
+\paragraph{Normalization function $\eta(.): \Real\mapsto [0,1]$.}\\
+The normalization function
+maps values in the range $[0,\infty)$ to the range $[0,1)$.
+While any monotone mapping from $\Real^{\geq 0}$ to $[0,1)$ can be used, we
+pick $\eta(z) = 1 - e^{-z}$.
+
+\smallskip 
+% \noindent\textbf{Importance factors $\gamma_i$.} 
+\looseness-1
+\paragraph{Importance factors $\gamma_k\in \Real^+$, $\textstyle\sum_{k}^{K}\gamma_k {=} 1$.}\\
+The weights $\gamma_k$ control the contribution of each bounded-\view \invariant in a
+conjunctive formula. This allows for prioritizing \invariants that are more
+significant than others.
+% within the context of a particular application.
+In our work, we derive the importance factor of a \invariant automatically,
+based on its \view's standard deviation over $D$.
+
+\subsubsection*{Quantitative semantics of compound \invariants} 
+Compound \invariants are first simplified into simple \invariants, and they get
+their meaning from the simplified form.
+We define a function
+$\norm(\psi, t)$ that takes a compound \invariant $\psi$ and a tuple $t$ and returns a simple
+\invariant. It is defined recursively as follows:
+\begin{align*}
+    &\norm(\vee(\;(A = c_1) \maxand\phi_1, (A = c_2) \maxand \phi_2,\ldots), t) := 
+      \phi_k  \; \mbox{if $t.A = c_k$}
+    \\
+    &\norm(\wedge(\psi_{A_1}, \psi_{A_2},\ldots), t)  := \wedge(\norm(\psi_{A_1}, t), \norm(\psi_{A_2},t),\ldots)
+\end{align*}
+%
+\begin{sloppypar} If the condition in the definition above does not hold for any $c_k$, then
+$\norm(\psi,t)$ is undefined and $\norm(\wedge(\dots,\psi,\dots),t)$ is
+also undefined. If $\norm(\psi,t)$ is undefined, then $\semq{\psi}(t) :=
+1$. When $\norm(\psi,t)$ is defined, the quantitative semantics of $\psi$ is
+given by:
+$$
+\semq{\psi}(t) := \semq{\norm(\psi,t)}(t)
+$$
+\end{sloppypar}
+
+Since compound \invariants simplify to simple \invariants, we mostly focus on 
+simple \invariants. Even there, we pay special attention to bounded-projection 
+\invariants ($\phi$) of the form \linebreak $\lb \le F(\vec{A}) \le \ub$, which lie at the core of simple \invariants. 
+
+
+\begin{example}\label{ex:semantics}
+	%
+    Consider the \invariant $\phi_1$ from Example~\ref{ex:constraints}.
+	%
+    % denoting $-5\leq F(\vec{A}) \leq 5$, where $F(\vec{A}) = AT - DT -
+%     DUR$, over the database $D$ consisting of the first four tuples,
+%     $\{t_1, t_2, t_3, t_4\}$, shown in Fig.~\ref{fig:flights}.
+	%
+	For $t \in D$,
+    $\semq{\phi_1}(t)= 0$ since $\phi_1$ is satisfied by all tuples in $D$. The
+    standard deviation of the projection $F$ over $D$, $\sigma(F(D)) {=}
+    \sigma(\{0,-5, 5, -2\}) {=} 3.6$. Now consider the last tuple $t_5 \not\in
+    D$. $F(t_5) = (370 - 1350)-458 = -1438$, which is way below the lower bound $-5$ of $\phi_1$. 
+	Now we compute how much $t_5$ violates $\phi_1$: 
+	$\semq{\phi_1}(t_5) = \semq{-5 \leq F(\vec{A}) \leq 5}(t_5) 
+		 			   = \eta(\alpha \cdot \max(0, -1438 - 5, -5 + 1438)) = 1 - e^{-\frac{1433}{3.6}} \approx 1$.
+%		 			   &= 1 - e^{-\frac{1433}{\sigma(F(D))}} = 1 - e^{-\frac{1433}{3.6}} \approx 1
+%	\end{align*}
+	%
+	Intuitively, this implies that $t_5$ strongly violates $\phi_1$.
+	%
+\end{example}
+
+

@@ -1,0 +1,128 @@
+%!TEX root = paper.tex
+
+\newcolumntype{?}{!{\vrule width 1pt}}
+\newcommand{\sln}{2}
+\newcommand{\eln}{18} 
+\newcommand{\cm}{\checkmark}
+\newcommand{\gm}{!}
+\let\st\relax
+\newcommand{\st}{$\star$}
+\newcommand{\na}{$\bot$}
+\newcommand{\nr}{$\varoslash$}
+\newcommand*{\bc}{% bold checkmark
+  \textpdfrender{
+    TextRenderingMode=FillStroke,
+    LineWidth=.5pt,
+  }{\checkmark}
+}
+
+\begin{figure}[t] 
+	\setlength\tabcolsep{1pt} 
+	\centering	
+	%\renewcommand{\arraystretch}{1.0}
+	\resizebox{1\columnwidth}{!}{ \small 
+	\begin{tabular}
+		{?c|c|p{50mm}?c|c|c|c|c|c?p{3mm}|c?c|c|c?c|c|c|c?c|c?} 
+		
+		\hline
+		
+		\hline
+		
+		\multicolumn{3}{?c?}{\cellcolor{vlightgray}{\multirow[c]{1}{*}{\cellcolor{vlightgray}{\rotatebox[origin=lb]{0}{{\textbf{Legend}}}}}}} & 
+		
+		% High-level Aspects
+		\multicolumn{6}{c?}{{\multirow[c]{1}{*}{\rotatebox[origin=lb]{0}{{\scriptsize constraints}}} }} &
+		\multicolumn{2}{c?}{{\multirow[c]{1}{*}{\rotatebox[origin=lb]{0}{{\scriptsize violation}}}}} &
+		\multicolumn{3}{c?}{{\multirow[c]{1}{*}{\rotatebox[origin=lb]{0}{{\scriptsize setting}}}}} &
+		\multicolumn{4}{c?}{{\multirow[c]{1}{*}{\rotatebox[origin=lb]{0}{{\scriptsize technique}}}}} &
+		\multicolumn{2}{c?}{{\multirow[c]{1}{*}{\rotatebox[origin=lb]{0}{{\scriptsize TML}}}}}\\
+		\hline
+		
+		\hline
+
+		% Legends
+		\multicolumn{2}{?r}{\cellcolor{vlightgray}{\small HP:	}} & 			\multicolumn{1}{l?}{\cellcolor{vlightgray}\small Hyper Parameter } &&&&&&&&&&&&&&&&&\\
+		\multicolumn{2}{?r}{\cellcolor{vlightgray}{\small FD:	}} & 			\multicolumn{1}{l?}{\cellcolor{vlightgray}\small Functional Dependency} &&&&&&&&&&&&&&&&&\\
+		\multicolumn{2}{?r}{\cellcolor{vlightgray}{\small DC:	}} & 			\multicolumn{1}{l?}{\cellcolor{vlightgray}\small Denial Constraint}		&&&&&&&&&&&&&&&&&\\
+		\multicolumn{2}{?r}{\cellcolor{vlightgray}{\small \nr:	}} & 			\multicolumn{1}{l?}{\cellcolor{vlightgray}\small Does not require } &&&&&&&&&&&&&&&&&\\
+		\multicolumn{2}{?r}{\cellcolor{vlightgray}{\small \na:	}} & 			\multicolumn{1}{l?}{\cellcolor{vlightgray}\small Not applicable } &&&&&&&&&&&&&&&&&\\
+		\multicolumn{2}{?r}{\cellcolor{vlightgray}{\small \st:	}} & 			\multicolumn{1}{l?}{\cellcolor{vlightgray}\small Supports via extension} &&&&&&&&&&&&&&&&&\\
+		\multicolumn{2}{?r}{\cellcolor{vlightgray}{\small !:	}} & 			\multicolumn{1}{l?}{\cellcolor{vlightgray}\small Partially}& 		 
+		
+		% Constraints aspects	 
+		\multirow[t]{4}{*}{\begin{sideways}{{\small parametric}}\end{sideways}} &
+		\multirow[t]{4}{*}{\begin{sideways}{{\small arithmetic}}\end{sideways}} &
+		\multirow[t]{4}{*}{\begin{sideways}{{\small approximate}}\end{sideways}} &	
+		\multirow[t]{4}{*}{\begin{sideways}{{\small conditional}}\end{sideways}}&
+		\multirow[t]{4}{*}{\begin{sideways}{{\small notion of weight}}\end{sideways}} &
+		\multirow[t]{4}{*}{\begin{sideways}{{\small interpretable}}\end{sideways}} &
+
+		% Violation aspects
+		\multirow[t]{4}{*}{\begin{sideways}{{\small continuous}}\end{sideways}} &
+		\multirow[t]{4}{*}{\begin{sideways}{{\small tuple-wise}}\end{sideways}} &
+
+		% Setting aspects
+		\multirow[t]{4}{*}{\begin{sideways}{{\small noisy data}}\end{sideways}} &
+		\multirow[t]{4}{*}{\begin{sideways}{{\small numerical attr.}}\end{sideways}} &
+		\multirow[t]{4}{*}{\begin{sideways}{{\small categorial attr.}}\end{sideways}} &
+		
+		% Technique aspects
+		\multirow[t]{4}{*}{\begin{sideways}{{\small $\!\varoslash\!$ thresholds}}\end{sideways}} &
+		\multirow[t]{4}{*}{\begin{sideways}{{\small $\!\varoslash\!$ distance metric}}\end{sideways}} &
+		\multirow[t]{4}{*}{\begin{sideways}{{\small $\!\varoslash\!$ HP tuning}}\end{sideways}}&
+		\multirow[t]{4}{*}{\begin{sideways}{{\small scalable}}\end{sideways}} &
+
+		% TML aspects
+		\multirow[t]{4}{*}{\begin{sideways}{{\small task agnostic}}\end{sideways}} &
+		\multirow[t]{4}{*}{\begin{sideways}{{\small $\!\varoslash\!$ access to model}}\end{sideways}}\\
+		
+		\hline 
+		
+		\hline
+		
+		% Data Profiling techniques
+		\multirow{13}{*}{\begin{sideways}{Data Profiling}\end{sideways}} & 
+		 
+						   \multicolumn{2}{l?}{\textbf{\DIs} } 																&\bc&\bc&\bc&\bc&\bc&\st&	\multicolumn{1}{c|}{\bc} &\bc&	\bc&\bc	&\bc&		\bc&\bc &\bc&\bc&		\bc&\bc\\
+		\cline{\sln-20}& \multicolumn{2}{l?}{FD~\cite{papenbrock2015functional}} 											&	&	&	&	&	&\cm&		&	&	   &	&\cm&	\cm&\cm &\cm&   &		\multicolumn{2}{c?}{\multirow{12}{*}{\begin{sideways}{not addressed in prior work}\end{sideways}}}\\
+		\cline{\sln-\eln}& \multicolumn{2}{l?}{Approximate FD~\cite{kruse2018efficient}} 									&	&	&\cm&	&	&\cm&		&	&	\cm&	&\cm&	   &\cm &\cm&	&	  \multicolumn{2}{c?}{}\\
+		\cline{\sln-\eln}& \multicolumn{2}{l?}{Metric FD~\cite{koudas2009metric}} 											&	&	&\cm&	&	&\cm&		&	&	\cm&\cm	&\cm&	   &	&\na&\na&	  \multicolumn{2}{c?}{}\\
+		\cline{\sln-\eln}& \multicolumn{2}{l?}{Conditional FD~\cite{DBLP:conf/icde/FanGLX09}} 								& ! &	&	&\cm&	&\cm&		&\cm&	\cm&	&\cm&	   &\cm &\cm&   &	  \multicolumn{2}{c?}{}\\
+		\cline{\sln-\eln}& \multicolumn{2}{l?}{Pattern FD~\cite{qahtan2020pattern}} 										& ! &	&	&	&	&\cm&		&\cm&	\cm&	&\cm&	   &\cm &\cm&   &	  \multicolumn{2}{c?}{}\\		
+		\cline{\sln-\eln}& \multicolumn{2}{l?}{Soft FD~\cite{DBLP:conf/sigmod/IlyasMHBA04}} 								&	&	&\cm&	&\cm&\cm&	\cm &	&	\cm&\cm	&\cm&	   &\cm &\cm&\cm&	  \multicolumn{2}{c?}{}\\
+		\cline{\sln-\eln}& \multicolumn{2}{l?}{Relaxed FD~\cite{caruccio2016discovery}} 									&	&	&\cm&	&	&\cm&		&	&	\cm&\cm	&\cm&	   &	&\cm&	&	  \multicolumn{2}{c?}{}\\
+		\cline{\sln-\eln}& \multicolumn{2}{l?}{FDX~\cite{DBLP:conf/sigmod/ZhangGR20}} 										&	&	&	&	&	&\cm&		&	&	\cm&	&\cm&	   &	&	&\cm&	  \multicolumn{2}{c?}{}\\
+		\cline{\sln-\eln}& \multicolumn{2}{l?}{Differential Dependency~\cite{song2011differential}} 						&	&	&	&	&	&\cm&		&	&	   &\cm	&\cm&	   &	&\cm&	&	  \multicolumn{2}{c?}{}\\
+		\cline{\sln-\eln}& \multicolumn{2}{l?}{DC~\cite{DBLP:journals/pvldb/ChuIP13, DBLP:journals/pvldb/BleifussKN17}} 	& ! &	&\cm&\cm&\cm&\cm&		&\cm&	\cm&\cm	&\cm&	   &\cm &\cm&	&	  \multicolumn{2}{c?}{}\\
+		\cline{\sln-\eln}& \multicolumn{2}{l?}{Approximate DC~\cite{pena2019discovery, DBLP:journals/corr/abs-2005-08540}} 	& ! &	&\cm&\cm&\cm&\cm&		&\cm&	\cm&\cm	&\cm&	   &\cm &\cm&	&	  \multicolumn{2}{c?}{}\\
+		\cline{\sln-\eln}& \multicolumn{2}{l?}{Statistical Constraint~\cite{DBLP:conf/sigmod/YanSZWC20}} 					&	&	&\cm&	&	&\cm&	\cm	&	&	\cm&\cm &\cm&	   &\cm &\cm&\cm&	  \multicolumn{2}{c?}{}\\
+			
+		\hline
+						
+		\hline
+		
+		% Learning Techniques	
+		\multirow{7}{*}{\begin{sideways}{Learning}\end{sideways}} & 
+						   \multicolumn{2}{l?}{Ordinary Least Square} 														&\cm&\cm&\cm&	&	&\st		&\cm&\cm		&\cm&\cm&\st		&\cm&\cm&\cm&\cm		&	&	\\
+		\cline{\sln-20}& \multicolumn{2}{l?}{Total Least Square} 															&\cm&\cm&\cm&	&	&\st		&\cm&\cm		&\cm&\cm&\st		&\cm&\cm&\cm&\cm		&\cm&\cm\\
+		\cline{\sln-20}& \multicolumn{2}{l?}{Auto-encoder~\cite{DBLP:journals/corr/abs-1812-02765}} 						&\multicolumn{6}{c?}{\na}		&\cm&\cm		&\cm&\cm&\cm		&	&	&	&\cm		&\cm&\cm\\
+		\cline{\sln-20}& \multicolumn{2}{l?}{Schelter et al.~\cite{DBLP:conf/sigmod/SchelterRB20}\textsuperscript{+}} 	&\multicolumn{6}{c?}{\na}		&\cm&			&	&\cm&\cm		&	&\cm&\cm&\cm		&	&	\\
+		\cline{\sln-20}& \multicolumn{2}{l?}{Jiang et al.~\cite{DBLP:conf/nips/JiangKGG18}} 								&\multicolumn{6}{c?}{\na}		&\cm&\cm		&\cm&\cm&\cm		&\cm&	&	&\cm		&	&	\\
+		\cline{\sln-20}& \multicolumn{2}{l?}{Hendrycks et al.~\cite{DBLP:journals/corr/HendrycksG16c}} 					&\multicolumn{6}{c?}{\na}		&	&\cm		&\cm&\cm&\cm		&\cm&\cm&\cm&\cm		&	&	\\
+		\cline{\sln-20}& \multicolumn{2}{l?}{Model's Prediction Probability} 												&\multicolumn{6}{c?}{\na}		&\cm&\cm		&\multicolumn{7}{c?}{varies}				&   &	\\
+		\hline
+		
+		\hline
+		\multicolumn{20}{r}{\textsuperscript{+} {\scriptsize Requires additional information}}\\
+
+	\end{tabular}
+	} 	
+	\vspace{-4mm} 	
+	\caption{\Dis complement existing data profiling primitives and provide an 
+	efficient mechanism to quantify trust in prediction, with
+	minimal assumption on the setting. 
+    } 
+	\label{relatedWorkMatrix} 
+	\vspace{-4mm} 
+	
+\end{figure}

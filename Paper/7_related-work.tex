@@ -1,0 +1,75 @@
+%!TEX root = paper.tex
+
+There is extensive literature on
+data-profiling~\cite{DBLP:journals/vldb/AbedjanGN15} primitives that model
+relationships among data attributes, such as functional dependencies
+(FD)~\cite{papenbrock2015functional, DBLP:conf/sigmod/ZhangGR20} and their
+variants~\cite{koudas2009metric, DBLP:conf/icde/FanGLX09,
+DBLP:conf/sigmod/IlyasMHBA04, huhtala1999tane, kruse2018efficient,
+caruccio2016discovery, qahtan2020pattern}, differential
+dependencies~\cite{song2011differential}, denial
+constraints~\cite{DBLP:journals/pvldb/ChuIP13,
+DBLP:journals/corr/abs-2005-08540, DBLP:journals/pvldb/BleifussKN17,
+pena2019discovery}, statistical constraints~\cite{DBLP:conf/sigmod/YanSZWC20},
+etc. However, none of them focus on learning approximate arithmetic
+relationships that involve multiple numerical attributes in a noisy setting,
+which is the focus of our work. Some FD
+variants~\cite{DBLP:conf/sigmod/IlyasMHBA04, koudas2009metric, huhtala1999tane,
+kruse2018efficient, caruccio2016discovery} consider noisy setting, but they
+require noise parameters to be explicitly specified by the user. In contrast,
+we do not require any explicit noise parameter.
+
+
+The issue of trust, resilience, and interpretability of artificial intelligence
+(AI) systems has been a theme of increasing interest
+recently~\cite{DBLP:conf/cav/Jha19, DBLP:journals/crossroads/Varshney19,
+DBLP:journals/corr/abs-1904-07204, DBLP:conf/mlsys/KangRBZ20}, particularly for
+safety-critical data-driven AI systems~\cite{DBLP:journals/bigdata/VarshneyA17,
+DBLP:conf/hicons/TiwariDJCLRSS14}. A standard way to decide whether to trust a
+classifier or not, is to use the classifier-produced confidence score. However,
+this is not always effective since the classifier's confidence scores are not
+well-calibrated~\cite{DBLP:conf/nips/JiangKGG18}. While some recent
+techniques~\cite{DBLP:conf/nips/JiangKGG18, DBLP:conf/sigmod/SchelterRB20,
+DBLP:journals/corr/HendrycksG16c, DBLP:journals/corr/abs-1812-02765} aim at
+validating the inferences made by machine-learned models on unseen tuples, they
+usually require knowledge of the inference task, access to the model, and/or
+expected cases of data shift, which we do not. Furthermore, they usually
+require costly hyper-parameter tuning and do not generate closed-form data
+profiles like \dis (Fig.~\ref{relatedWorkMatrix}). Prior work on data drift,
+change detection, and covariate shift~\cite{DBLP:conf/sigmod/Aggarwal03,
+DBLP:journals/tnn/BuAZ18, dasu2006information, DBLP:journals/eswa/MelloVFB19,
+DBLP:conf/kdd/ReisFMB16, DBLP:journals/inffus/FaithfullDK19,
+DBLP:conf/icml/Ho05, hooi2019branch, DBLP:conf/sdm/KawaharaS09,
+DBLP:conf/vldb/KiferBG04, DBLP:journals/eswa/SethiK17, DBLP:conf/kdd/SongWJR07,
+DBLP:conf/sac/IencoBPP14, DBLP:conf/cbms/TsymbalPCP06,
+DBLP:journals/corr/WangA15, DBLP:conf/sbia/GamaMCR04, DBLP:conf/sdm/BifetG07,
+gaber2006classification, DBLP:journals/tnn/RutkowskiJPD15,
+DBLP:conf/iri/SethiKA16} relies on modeling data distribution. However, data
+distribution does not capture constraints, which is the primary focus of our
+work.
+
+
+Few works~\cite{DBLP:journals/corr/abs-1812-02765,
+DBLP:journals/corr/HendrycksG16c, DBLP:journals/corr/abs-1909-03835} use
+autoencoder's~\cite{hinton2006reducing, rumelhart1985learning} input
+reconstruction error to determine if a new data point is out-of-distribution.
+Our approach is similar to outlier-detection~\cite{kriegel2012outlier} and
+one-class-classification~\cite{DBLP:conf/icann/TaxM03}. However, \dis differ
+from these approaches as they perform under the additional requirement to
+generalize the data in a way that is exploited by a given class of ML models.
+In general, there is a clear gap between representation learning (that models
+data likelihood)~\cite{hinton2006reducing, rumelhart1985learning,
+achlioptas2017learning, karaletsos2015bayesian} and the (constraint-oriented)
+data-profiling techniques to address the problem of trusted AI and our aim is
+to bridge this gap.
+
+\vspace{-1mm}
+
+
+
+
+
+
+
+
+

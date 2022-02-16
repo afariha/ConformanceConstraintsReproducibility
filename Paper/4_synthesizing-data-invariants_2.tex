@@ -1,0 +1,428 @@
+%!TEX root = paper.tex
+% \section{Synthesizing \DIs}
+
+\subsubsection{PCA-inspired \View Derivation}\label{candidatesec}
+
+
+\setlength{\textfloatsep}{0mm}
+\begin{algorithm}[t]
+	\caption{Procedure to generate linear \views.}
+	\label{fig:pca}
+	\LinesNumbered
+	\small{ 
+    	\SetKwInOut{Inputs}{Inputs}
+		\SetKwInOut{Output}{Output}
+		\Inputs{
+			A dataset $D \subset \DDom^m$
+		}
+		\Output{
+                    A set $\{(F_1,\gamma_1),\ldots,(F_K,\gamma_K)\}$ of \views and importance factors
+    	}
+                $D_N  \gets D {\mbox{ after dropping non-numerical attributes}}$  \label{algo2:line1}\\ 
+                $D'_N  \gets [\vec{1} ; D_N]$ \label{algo2:line2} \\
+                $\{\vec{w}_1,\ldots,\vec{w}_K\} \gets {\mbox{ eigenvectors of }} {D_N'}^T D_N'$ \label{algo2:line31} \\
+				\ForEach{$1 \le k \le K$}{
+					$\vec{w}_k' \gets {\mbox{ $\vec{w}_k$ with first element removed}}$\label{algo2:line32} \\
+                                        $F_k \gets \lambda\vec{A}: \frac{\vec{A}^T\vec{w}_k'}{||\vec{w}_k'||}$\label{algo2:line33} \\
+					%{\mbox{ for $i=1,\ldots,k$}}$ \label{algo2:line3} \\
+					$\gamma_k \gets \frac{1}{\log(2+\stddev{F_k(D_N)})}$ \label{algo2:line34}
+					%\af{I fixed it with $\log$ since that is what we do.  Any argument needed for that? Also, I fixed $\stddev{F_i(D)}$ to $\stddev{F_i(D_N)}$. Check if that's correct.}
+					% {\mbox{ for $i=1,\ldots,k$}}$ \label{algo2:line4} \\
+				}
+                \Return $\{(F_1,\frac{\gamma_1}{Z}),\ldots,(F_K,\frac{\gamma_K}{Z})\}$, where
+                $Z = \sum_k \gamma_k$\label{algo2:line35}
+	}
+\end{algorithm}
+\setlength{\textfloatsep}{5pt}
+ 
+Theorem~\ref{THM:MAIN} sets the requirements for good \views (see
+also~\cite{tveten2019principal, tveten2019tailored,
+DBLP:journals/tnn/KunchevaF14} that make similar observations in different
+ways). It indicates that we can start with any arbitrary \views and then
+iteratively improve them. However, we can get the desired set of best \views in
+one shot using an algorithm inspired by principal component analysis (PCA).
+\revisetwo{PCA relies on computing eigenvectors. \label{pcadetails} There exist
+different algorithms for computing eigenvectors (from the infinite space of
+possible vectors). The general mechanism involves applying numerical approaches
+to iteratively converge to the eigenvectors (up to a desired precision) as no
+analytical solution exists in general.} Algorithm~\ref{fig:pca}  returns \views that
+correspond to the principal components of a
+slightly modified version of the given dataset: % (Fig.~\ref{fig:pcadetails}).
+% Algorithm~\ref{fig:pca} details our approach for discovering \views for
+% constructing \dis:
+
+% The
+% only additional technical point is the addition of a dummy attribute (column)
+% to the dataset, which is set to the constant $1$ for each tuple. This is done
+% because we are not normalizing the data (e.g., to make the mean of each column
+% zero). It turns out that adding a constant dummy column
+% lets us avoid normalizing the data. % achieves the same effect.
+% We avoid normalizing just to keep the values unchanged so that the generated \di is
+% interpretable on original values.  In detail, we have:
+\smallskip
+
+\begin{description}
+	%
+    \looseness-1
+    \item[Line~\ref{algo2:line1}] Drop all non-numerical attributes from $D$ to
+    get the numeric dataset $D_N$. This is necessary because PCA only applies
+    to numerical values. Instead of dropping, one can also consider embedding
+    techniques to convert non-numerical attributes to numerical ones.
+
+    \item[Line~\ref{algo2:line2}] Add a new column to $D_N$ that consists of
+    the constant $1$, to obtain the modified dataset $D_N' := [\vec{1} ; D_N]$,
+    where $\vec{1}$ denotes the column vector with $1$ everywhere. We do this
+    transformation to capture the additive constant within principal
+    components, which ensures that the approach works even for unnormalized
+    data.
+
+    \item[Line~\ref{algo2:line31}] Compute $K$ eigenvectors of the square
+    matrix ${D_N'}^{T}D_N'$, where $K$ denotes the number of columns in $D'_N$.
+	These eigenvectors provide coefficients to construct \views.
+
+    \item[Lines~\ref{algo2:line32}--\ref{algo2:line33}] Remove the first
+    element (coefficient for the newly added constant column) of all
+    eigenvectors and normalize them to generate \views. Note that we no longer
+    need the constant element of the eigenvectors since we can appropriately
+    adjust the bounds, $\lb$ and $\ub$, for each \view by evaluating it on
+    $D_N$.
+        %% bounds of
+    %% the \dis by shifting the mean by the corresponding constant amount. 
+        % (The
+ %    2-norm $||\vec{w}'_k||$ is $\sqrt{{\vec{w}_k}^{'T} \vec{w}'_k}$.)
+
+    \item[Line~\ref{algo2:line34}] Compute importance factor for each \view.
+    Since \views with smaller standard deviations are more discerning (i.e.,
+    stronger), we assign each \view an importance factor ($\gamma$) that is
+    inversely proportional to its standard deviation over $D_N$.
+
+    \item[Line~\ref{algo2:line35}] Return the linear \views with corresponding
+    normalized importance factors.
+
+\end{description}
+% \\
+% (a) Drop all non-numerical attributes from $D$ to get $D_N$ (line~\ref{algo2:line1}).
+% %Let $\vec{w}$ denote the unknown weights that define
+% %the linear \view $F(\vec{A}) = \vec{A}^T\vec{w}$ on $D_N$. We prefer $\vec{w}$
+% %that minimizes $\stddev{D_N\vec{w}}$.
+% %
+% %
+% %
+% %We are interested in learning linear functionals $F(A_1,\ldots,A_k)$ of the form
+% %$w_0 + w_1 A_1  + w_2 A_2 + \cdots + w_k A_k$, where $x1,\ldots,A_k$ are the $k$ numerical columns
+% %in $D_N$ and $w_0, w_1,\ldots,w_k$ are $k+1$ unknown weights.
+% %%Since data can be noisy, we want to allow for the equality relation to be not necessarily an exact equality.
+% %
+% %Without loss of generality, we ignore the constant term $w_0$ in the \invariant. This is because
+% %We find $\vec{w}$ as follows:
+% \\
+% %
+% (b) Add a new column to $D_N$ that consists of the constant $1$, that is,
+% $D_N' := [\vec{1} ; D_N]$, where $\vec{1}$ denotes the column vector with $1$
+% everywhere (line~\ref{algo2:line2}).
+% %If $D_N$ has $k-1$ columns, then $D_N'$ has $k$ columns.
+% %
+% \\
+% %
+% (c) Compute $k$ eigenvectors of the square matrix ${D_N'}^{T}D_N'$, where $k$
+% denotes the number of columns in $D'_N$
+% (line~\ref{algo2:line31}). % $\vec{v} := [v_1;v_2;\ldots;v_k]$ corresponding to the lowest
+% %eigenvalue,
+% %
+% \\
+% %
+% (d) Remove the first element from each eigenvector (line~\ref{algo2:line32})
+% and normalize them to generate \views (line~\ref{algo2:line33}). (The 2-norm
+% $||\vec{v}||$ of $\vec{v}$ is $\sqrt{\vec{v}^T\vec{v}}$.)
+% \\ (e) Compute
+% importance factor for each \view (line~\ref{algo2:line34}).
+% \\ (f) Return the
+% linear \views with corresponding normalized importance factors
+% (line~\ref{algo2:line35}).
+
+\smallskip
+
+We now claim that the \views returned by Algorithm~\ref{fig:pca} include the
+\view with minimum standard deviation and 
+%. Furthermore, if $D$ is sufficiently large, then 
+the correlation between any two \views 
+%returned Algorithm~\ref{fig:pca} 
+is 0. This indicates that we cannot further improve
+the \views, and, thus they are optimal.
+%,and $[a;b]$ denotes $\left[\begin{matrix}a \\ b\end{matrix}\right]$.
+
+\begin{theorem}[Correctness of Algorithm~\ref{fig:pca}]\label{THM:ALGO2-CORRECTNESS}
+	%
+    Given a numerical dataset $D$ over the schema $\mathcal{R}$, let
+    $\mathcal{F} = \{F_1,F_2,\ldots, F_K\}$ be the set of linear \views
+    returned by Algorithm~\ref{fig:pca}. Let $\sigma^* =
+    \min_k^{K}\stddev{F_k(D)}$. If $\mu(A_k(D)) = 0$ for all attribute $A_k$ in
+    $\mathcal{R}$, then,\footnote{When the condition $\forall A_k \;
+    \mu(A_k(D)) = 0$ does not hold, slightly modified variants of the claim
+    hold. However, by normalizing $D$ (i.e., by subtracting attribute mean
+    $\mu(A_k(D))$ from each $A_k(D)$), it is always possible to satisfy the
+    condition.}
+%
+	\begin{enumerate}[label=(\arabic*)]
+            \item $\sigma^* \leq \stddev{F(D)}$ $\forall F=\vec{A}^T\vec{w}$ where $||\vec{w}||\geq 1$, and
+    \item $\forall F_j, F_k \in \mathcal{F}$ s.t.\ $F_j\neq F_k$, 
+        % the corresponding eigenvalues $\varepsilon_j \neq \varepsilon_k$, 
+        $\rho_{F_j, F_k} = 0$.
+		% (assuming, wlog, Algorithm~\ref{fig:pca} always picks                orthogonal eigenvectors).
+        % $\lim_{|D| \to \infty} \rho_{F_j, F_k} = 0$, \textcolor{red}{under the assumption that
+                % the columns of $D$ converge to some mean value and the
+                % eigenvalues of $D^TD$ converge to some fixed values.}
+	\end{enumerate}
+    % Furthermore, any linear \view $F$ s.t.\ $\stddev{F(D)} = \sigma^*$ 
+    % is equal to a linear
+    % combination of $F_j$'s whose standard deviation is $\sigma^*$ on $D$.
+\end{theorem}
+% Let $\vecw$ be the (column) vector consisting of the unknown weights $w_1,\ldots,w_k$.
+% Since $d\vecw$ may not identically be $0$ for all $d\in D_N$, 
+% we can cast the problem of finding $w_1,\ldots,w_k$ as an optimization problem
+% that tries to minimize the sum $\sum_{d\in D_N} (d\vecw)^2$, which we shall call {\em{error}}.  
+% In matrix notation, this error can be written
+% as $\vecw^T D_N^TD_N \vecw$.
+% We restrict $\vecw$ to unit vectors to make the optimization problem well posed.
+
+
+
+
+\ignore{
+In Algorithm~\ref{fig:pca}, we use the above procedure to compute linear \views.
+\af{I will pull this before, and will describe the procedure while referring
+to the corresponding lines in the algorithm. I can do it if you agree.}
+Algorithm~\ref{fig:pca} computes \views using {\em{all}} eigenvectors, rather
+than just the eigenvector corresponding to the lowest eigenvalue. 
+\endignore}
+
+Using \views $F_1, \ldots, F_K$, and importance factors
+$\gamma_1,\ldots,\gamma_K$, returned by Algorithm~\ref{fig:pca}, we generate
+the simple (conjunctive) \invariant with $K$ conjuncts:
+%
+$
+ \bigwedge_k  \lb_k \leq F_k(\vec{A}) \leq \ub_k
+$.
+%
+We compute the bounds $\lb_k$ and $\ub_k$ following Section~\ref{synth-bounds}
+and use the importance factor $\gamma_k$ for the $k^{th}$ conjunct in the
+quantitative semantics.
+
+\begin{example}\label{ex:int} Algorithm~\ref{fig:pca} finds the projection of the \di of
+Example~\ref{ex:tml}, but in a different form. The actual airlines dataset has
+an attribute $\mathtt{distance}\; (\mathtt{DIS})$ that represents miles travelled by a flight. In
+our experiments, we found the following \di\footnote{For ease of exposition, we
+use $F(\vec{A}) \approx 0$ to denote $\epsilon_1 \le F(\vec{A}) \le
+\epsilon_2$, where $\epsilon_i \approx 0$.} over the dataset of daytime flights:
+%
+{
+\begin{align}\label{eq:one}
+0.7 \times \mathtt{AT} - 0.7 \times \mathtt{DT} - 0.14 \times \mathtt{DUR} - 0.07 \times \mathtt{DIS} \approx 0
+\end{align}
+}
+%
+This \invariant is not quite interpretable by itself, but it is in fact a
+linear combination of two expected and interpretable
+\invariants:~\footnote{\revisetwo{We developed a tool~\cite{DBLP:conf/sigmod/FarihaTRG20} to explain causes of
+non-conformance.~\citeTechRep}}
+%
+{
+\begin{align}
+	\mathtt{AT} - \mathtt{DT} - \mathtt{DUR} &\approx 0 \label{eq:two}\\
+	\mathtt{DUR} - 0.12 \times \mathtt{DIS} &\approx 0 \label{eq:three}
+\end{align}
+}
+%
+Here, (\ref{eq:two}) is the one mentioned in Example~\ref{ex:tml} and
+(\ref{eq:three}) follows from the fact that average aircraft speed is about
+$500$ mph implying that it requires $0.12$ minutes per mile. $0.7$ $\times$
+(\ref{eq:two}) + $0.56$ $\times$ (\ref{eq:three}) yields:
+%
+{
+\begin{align*}
+&0.7 \times (\mathtt{AT} - \mathtt{DT} - \mathtt{DUR}) + 0.56 \times \mathtt{DUR} - 0.56 \times 0.12 \times \mathtt{DIS} \approx 0 \\
+\implies & 0.7 \times \mathtt{AT} - 0.7 \times \mathtt{DT} - 0.14 \times \mathtt{DUR} - 0.07 \times \mathtt{DIS} \approx 0
+\end{align*}
+}
+%
+Which is exactly the \di~(\ref{eq:one}). Algorithm~\ref{fig:pca} found the
+optimal \view of~(\ref{eq:one}), which is a linear combination of the \views
+of~(\ref{eq:two}) and~(\ref{eq:three}). The reason is: there is a correlation
+between the \views of~(\ref{eq:two}) and~(\ref{eq:three}) over the dataset
+(Theorem~\ref{THM:MAIN}). One possible explanation of this correlation is:
+whenever there is an error in the reported duration of a tuple, it violates
+both~(\ref{eq:two}) and~(\ref{eq:three}). Due to this natural correlation,
+Algorithm~\ref{fig:pca} returned the optimal \view of~(\ref{eq:one}), that
+``covers'' both \views of~(\ref{eq:two}) or~(\ref{eq:three}).
+
+%
+\end{example}
+
+\ignore{ 
+
+The reason for including \views corresponding to all eigenvalues in the
+simple \invariant---in addition to the one with smallest standard
+deviation---is that it only strengthens the \invariant. Note that we use importance factors $\gamma_i$ to give
+more importance to the \views with smaller standard deviations. One obvious
+question is: can our procedure miss some linear \views with small standard
+deviations? The following result states that we do not miss any linear \views
+corresponding to the {\em{smallest}} achievable standard deviation.
+
+% Consider the eigenvalues and eigenvectors of the positive semi-definite matrix $D_N^TD_N$.
+% Let $\eig_1,\ldots,\eig_k$ be the $k$ eigenvalues, and 
+% $\vecv_1, \ldots,\vecv_k$ be the corresponding $k$ eigenvectors of $D_N^TD_N$. Assuming that the eigenvectors are normalized to have norm $1$, we have
+% $$
+ % \vecv_j^T D_N^TD_N \vecv_j = \vecv_j^T \eig_j\vecv_j = \eig_j
+% $$
+% Since $D_N^TD_N$ is real-valued, symmetric, and positive semi-definite, we know that $\eig_j$'s are all non-negative reals.
+% WLOG, assume $\eig_1 \leq \eig_2 \leq \cdots \leq \eig_k$.
+% Define $k$ linear functionals $f_1,f_2,\ldots,f_k$,
+% where $f_i$ is defined as $f_i(A_1,\ldots,A_k) = \vecv_{j1}A_1 + \cdots + \vecv_{jk}A_k$.
+% For these $k$ choices,
+% the spectrum, $\eig_1, \ldots, \eig_k$, of the matrix $D_N^TD_N$, provides us with different choices for the error value. 
+% %
+% Since we want to minimize error \af{I don't think this argument is correct. As
+% mentioned in Section 2, we want neither overfit nor underfit \invariants. If we
+% wanted to minimize error, you could always learn a NULL \invariant, why even
+% just one with lowest eigenvalue?}, we should pick $\vecv_1$, the eigenvector
+% corresponding to $\eig_1$, to construct our \invariant. In fact, we should
+% use all eigenvectors corresponding to small eigenvalues, since some prior
+% work~\cite{tveten2019principal, tveten2019tailored,
+% DBLP:journals/tnn/KunchevaF14} showed that low eigenvalue principal components
+% are more sensitive to a general change. Rather than use some heuristic to
+% determine which eigenvalues are ``small'' and which are not, in our
+% implementation, we just use all eigenvectors \af{I think we can get rid of
+% defer it to the Experiment section where I would keep a subsection for
+% implementation specifics.}, but {\em{weigh them differently}} according to the
+% standard deviation of $f_i(D_N)$, as we stated before. \todo{Talk about
+% $\gamma$ being $\frac{1}{\log(2 + \stddev{D})}$. And then talk about
+% normalizing them}. Note that the above derivation shows that $\stddev{f_j}$ is
+% related to the value $\eig_j$ of the corresponding eigenvalue.
+% Algorithm~\ref{fig:pca} summarizes the procedure for computing the linear
+% functionals from a data set $D$, which are then used to define the actual
+% \invariants as described in previous section.\af{I am not sure if the algorithm
+% is very useful, as PCA is a very well known technique.}\af{This is the heart of
+% this section, and one of our core novelty. I think we should revise this with
+% better justification and intuition. At present, it looks very weak.}
+
+\begin{theorem}
+    Let $D$ be a dataset and
+    $F_1,F_2,\ldots$ be the linear \views returned by the procedure in Algorithm~\ref{fig:pca} 
+    when on $D$.
+    Let $\sigma^* = \min(\{\stddev{F_i(D)} | i=1,2,\ldots\})$.
+    If there is a linear \view $F$ s.t. $\stddev{F(D)} = \sigma^*$, then $F$ will be in the linear subspace spanned by all the linear
+     $F_j$ with standard deviation $\sigma^*$ on $D$.
+\end{theorem}
+\af{I now have high level idea of what this theorem is trying to say, but I still 
+think we can omit it in this paper.}
+% .. Dw.Dw = Dv.Dv and ||w||=||v||=1
+% ||av + bw||^2 = a^2 + b^2 + 2ab cos(theta)
+% D(av+bw).D(av+bw) = (aDv + bDw).(aDv + bDw) = a^2 S + b^2 S + 2ab (Dv.Dw) = aaS + bbS + 2abS v^Tw = S!!
+
+
+We observe that the most common way in which PCA is used involves {\em{throwing
+away}} the low variance components, whereas we give {\em{most importance}} to
+these components. This role reversal is one of our key insights in synthesizing good
+\dis.
+
+\endignore}
+
+
+
+\subsection{Compound \DIs}\label{sec:disjunctive}
+% We now describe computation of \emph{disjunctive} linear \invariants. 
+The quality of our PCA-based simple linear \invariants relies on how many low
+variance linear \views we are able to find on the given dataset. For many
+datasets, it is possible we find very few, or even none, such linear \views. In
+these cases, it is fruitful to search for compound \invariants; we first focus
+on {\em{disjunctive \invariants}} (defined by $\psi_A$ in our language grammar).
+
+The PCA-based approach fails in cases where there exist different piecewise linear
+trends within the data, as it will result into low-quality \invariants, with
+very high variances. In such cases, partitioning the dataset and then learning
+\invariants separately on each partition will result in significant improvement
+of the learned \invariants. A disjunctive \invariant is a compound \invariant
+of the form $\bigvee_k((A = c_k) \maxand \phi_k)$, where each $\phi_k$ is a
+\invariant for a specific partition of $D$. Finding disjunctive \invariants
+involves horizontally partitioning the dataset $D$ into smaller disjoint
+datasets $D_1, D_2, \ldots, D_L$. Our strategy for partitioning $D$ is to use
+categorical attributes with a small domain in $D$; in our implementation, we
+use those attributes $A_j$ for which $|\{t.A_j | t\in D\}|\le50$. If $A_j$ is
+such an attribute with values $v_1, v_2, \ldots, v_L$, we partition $D$ into
+$L$ disjoint datasets $D_1, D_2,\ldots, D_L$, where $D_l = \{t \in D | t.A_j =
+v_l\}$. Let $\phi_1, \phi_2, \ldots, \phi_L$ be the $L$ simple \dis we learn
+for $D_1, D_2, \ldots, D_L$ using Algorithm~\ref{fig:pca}, respectively. We
+compute the following disjunctive \di for $D$:\\
+%  (recall that the quantitative semantics
+% of \dis does not satisfy the typical Boolean algebra laws for $\vee$
+% and $\wedge$)
+%
+\indent $
+ ((A_j = v_1) \maxand \phi_1) \vee 
+ ((A_j = v_2) \maxand \phi_2) \vee 
+\cdots \vee
+ ((A_j = v_L) \maxand \phi_L)\\[-0.7em]
+$
+
+\looseness-1 We repeat this process and partition $D$ across multiple
+attributes and generate a compound disjunctive \invariant for each attribute.
+Then we generate the final compound conjunctive \di ($\Psi$) for $D$, which is
+the conjunction of all these disjunctive \invariants. Intuitively, this final
+\di forms a set of \emph{overlapping} hyper-boxes around the data tuples.
+
+
+\subsection{Theoretical Analysis}\label{sec:complexity} 
+
+\subsubsection{Runtime Complexity}\looseness-1 Computing simple \invariants
+involves two computational steps: (1)~computing $X^TX$, where $X$ is an
+$n\times m$ matrix with $n$ tuples and $m$ attributes, which~takes
+$\mathcal{O}(nm^2)$ time, and (2)~computing the eigenvalues and eigenvectors of
+an $m\times m$ positive definite matrix, which has complexity
+$\mathcal{O}(m^3)$~\cite{DBLP:conf/stoc/PanC99}. Once we obtain the linear
+\views using the above two steps, we need to compute the mean and variance of
+these \views on the original dataset, which takes $\mathcal{O}(nm^2)$ time. In
+summary, the overall procedure is cubic in the number of attributes and linear
+in the number of tuples.
+%
+For computing disjunctive \invariants, we greedily pick attributes that take at
+most $L$ (typically small) distinct values, and then run the above procedure
+for simple \invariants at most $L$ times. This adds just a constant factor
+overhead per attribute.
+
+\subsubsection{Memory Complexity} The procedure can be implemented in
+$\mathcal{O}(m^2)$ space. The key observation is that $X^T X$ can be computed
+as $\sum_{i=1}^{n} t_i t_i^T$, where $t_i$ is the $i^{th}$ tuple in the
+dataset. Thus, $X^TX$ can be computed incrementally by loading only one tuple
+at a time into memory, computing $t_i t_i^T$, and then adding that to a running
+sum, which can be stored in $\mathcal{O}(m^2)$ space. Note that instead of such
+an incremental computation, this can also be done in an embarrassingly parallel
+way where we horizontally partition the data (row-wise) and each partition is
+computed in parallel.
+
+% Due to such low time and memory complexity, our approach
+% scales gracefully to large datasets.
+
+\revisetwo{\subsubsection{Implication, Redundancy, and Minimality}\label{sec:impl}
+Definition~\ref{def:stronger} gives us the notion of \emph{implication} on
+\dis: for a dataset $D$, satisfying $\phi_1$ that is stronger than $\phi_2$
+implies that $D$ would satisfy $\phi_2$ as well.
+%
+Lemma~\ref{LEMMA:MAIN} and Theorem~\ref{THM:MAIN} associate \emph{redundancy}
+with correlation: correlated projections can be combined to construct a new
+projection that makes the correlated projections redundant.
+Theorem~\ref{THM:ALGO2-CORRECTNESS} shows that our PCA-based procedure finds
+a non-redundant (orthogonal and uncorrelated) set of projections. For disjunctive
+\invariants, it is possible to observe redundancy across partitions. However,
+our quantitative semantics ensures that redundancy does not affect the
+violation score.
+%
+Another notion relevant to data profiles (e.g., FDs) is \emph{minimality}. In
+this work, we do not focus on finding the minimal set of \dis. Towards
+achieving minimality for \dis, a future direction is to explore techniques for
+optimal data partitioning. However, our approach computes only $m$ \dis for
+each partition. Further, for a single tuple, only $m_N \cdot m_C$ \dis are applicable,
+where $m_{N}$ and $m_C$ are the number of numerical and categorical attributes
+in $D$ (i.e., $m = m_{N} + m_C$). The quantity $m_N \cdot m_C$ is upper-bounded by
+$\frac{m^2}{4}$. }
+
+

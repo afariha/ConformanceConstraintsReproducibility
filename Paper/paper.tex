@@ -1,0 +1,204 @@
+\newif\ifTechRep
+\TechRepfalse
+
+\pdfminorversion=7
+\documentclass[sigconf]{acmart}
+\usepackage[font=small, labelformat=simple]{subcaption}
+\usepackage[font=small, labelformat=simple]{caption}
+\usepackage[ruled,vlined,noend]{algorithm2e}
+\usepackage{enumitem}
+\usepackage{color}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{color, colortbl}
+\usepackage{booktabs}
+\usepackage{balance}
+\usepackage{rotating}
+\usepackage{pdfrender}
+\usepackage{stmaryrd}
+\usepackage{anyfontsize}
+\usepackage{amsthm}
+\usepackage{soul}
+\usepackage{xcolor}
+\usepackage{soul}
+
+\setlist{nolistsep,leftmargin=*}
+\definecolor{vlightgray}{gray}{0.85}
+\pdfsuppresswarningpagegroup=1
+\let\paragraph\relax 
+
+%\theoremstyle{lemma}
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\invariant}{constraint\xspace}
+\newcommand{\invariants}{constraints\xspace}
+\newcommand{\Invariant}{Constraint\xspace}
+\newcommand{\Invariants}{Constraints\xspace}
+\newcommand{\DI}{Conformance Constraint\xspace}
+\newcommand{\DIs}{Conformance Constraints\xspace}
+\newcommand{\di}{conformance constraint\xspace}
+\newcommand{\dis}{conformance constraints\xspace}
+\newcommand{\Di}{Conformance constraint\xspace}
+\newcommand{\Dis}{Conformance constraints\xspace}
+\newcommand{\hdi}{conformance-constraint\xspace}
+
+\renewcommand{\thesubtable}{(\alph{subtable})}
+\renewcommand{\thesubfigure}{(\alph{subfigure})}
+\newcommand{\paragraph}[1]{\noindent\textbf{#1}}
+\newcommand{\affmark}[1]{\textsuperscript{\small \textsuperscript{\small #1}}}
+\newcommand{\affilmark}[1]{\textsuperscript{\small #1}}
+\newcommand{\ignore}[1]{{}}
+\newcommand{\revise}[1]{{\color{blue} #1}}
+\newcommand{\system}{\textsc{CCSynth}\xspace}
+\newcommand{\nc}{unsafe\xspace}
+\newcommand{\Nc}{Unsafe\xspace}
+\newcommand{\extune}{SysX\xspace}
+\newcommand{\View}{Projection\xspace}
+\newcommand{\Views}{Projections\xspace}
+\newcommand{\view}{projection\xspace}
+\newcommand{\views}{projections\xspace}
+\newcommand{\maxand}{\rhd}
+\newcommand{\norm}{\mathtt{simp}}
+
+\newcommand{\techRepCitation}{\ifTechRep  (see Appendix)\xspace\else \cite{technicalReport}\xspace\fi}
+\newcommand{\citeTechRep}{\cite{technicalReport}}
+\newcommand{\theTechRep}{our technical report~\citeTechRep}
+\newcommand{\appOrTechRep}{\ifTechRep the Appendix\xspace\else our technical report~\citeTechRep\xspace\fi}
+
+\newcommand{\af}[1]{[\textcolor{magenta}{Anna: #1}]}
+\newcommand{\am}[1]{[\textcolor{magenta}{Alexandra: #1}]}
+\newcommand{\at}[1]{[\textcolor{magenta}{Ashish: #1}]}
+\newcommand{\mathcolorbox}[2]{\colorbox{#1}{$\displaystyle #2$}}
+
+
+% Changes specific to reviewers are color coded
+\definecolor{green}{RGB}{0,140,0}
+
+% \newcommand{\green}{green}
+% \newcommand{\blue}{blue}
+% \newcommand{\red}{red}
+
+%% Uncomment during camera-ready
+\newcommand{\green}{black}
+\newcommand{\blue}{black}
+\newcommand{\red}{black}
+
+\newcommand{\reviseone}[1]{{\color{\green} #1}}
+\newcommand{\revisetwo}[1]{{\color{\blue} #1}}
+\newcommand{\revisethree}[1]{{\color{\red} #1}}
+
+
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    \normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX}}}
+
+% Copyright
+
+\copyrightyear{2021}
+\acmYear{2021}
+\setcopyright{acmlicensed}
+\acmConference[SIGMOD '21] {Proceedings of the 2021 International Conference on Management of Data}{June 20--25, 2021}{Virtual Event, China}
+\acmBooktitle{Proceedings of the 2021 International Conference on Management of Data (SIGMOD '21), June 20--25, 2021, Virtual Event, China}
+\acmPrice{15.00}
+\acmDOI{10.1145/3448016.3452795}
+\acmISBN{978-1-4503-8343-1/21/06}
+
+
+
+
+% remove copyright block for submission
+%\setcopyright{none}
+\settopmatter{printacmref=true}
+%\renewcommand\footnotetextcopyrightpermission[1]{} 
+%\pagestyle{plain}
+\fancyhead{}
+\begin{document}
+
+\title[]{Conformance Constraint Discovery: \\Measuring Trust in Data-Driven Systems}
+\ifTechRep
+\subtitle{Technical Report}
+\fi
+
+
+\author{Anna Fariha}
+\authornote{Part of the research was done while the author was an intern at Microsoft.}
+\authornote{Both authors contributed equally to this research.}
+\affiliation{
+  \institution{University of Massachusetts Amherst}
+    \institution{}
+  \country{}
+}
+\email{afariha@cs.umass.edu}
+
+\author{Ashish Tiwari}
+\authornotemark[2]
+\author{Arjun Radhakrishna}
+\author{Sumit Gulwani}
+\affiliation{
+  \institution{Microsoft}
+  \country{}
+}
+\email{{astiwar, arradha, sumitg}@microsoft.com}
+
+\author{Alexandra Meliou}
+\affiliation{
+  \institution{University of Massachusetts Amherst}
+    \institution{}
+	\country{}
+}
+\email{ameli@cs.umass.edu}
+
+\renewcommand{\shortauthors}{Fariha and Tiwari, et al.}
+\begin{abstract}
+\input{0_abstract}
+\end{abstract}
+
+\maketitle
+\fancyhead{}
+
+\section{Introduction}\label{sec:introduction}
+\input{1_introduction}
+
+\section{Case Studies}\label{sec:casestudies}
+\input{2_case-studies}
+
+\section{\DIs}\label{sec:data-invs}
+\input{3_data-invariants}
+
+\section{\DI Synthesis}\label{sec:synth-data-inv}
+\input{4_synthesizing-data-invariants_1}
+\input{4_synthesizing-data-invariants_2}
+
+\section{Trusted Machine Learning}\label{sec:di-for-tml}
+\input{5_di_tml}
+
+\section{Experimental Evaluation}\label{sec:experiments}
+\input{6_experiment}
+
+\section{Related Work}\label{sec:applications}
+\input{7_related-work}
+
+\section{Summary and Future Directions}\label{discussion}
+\input{8_summary}
+
+\smallskip
+
+{\noindent \textbf{Acknowledgements}: This work was partially
+supported by the NSF grants IIS-1453543 and CCF-1763423, and by Oracle Labs.}
+%, and a Microsoft Research Dissertation Grant.}
+
+\balance
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{paper}
+
+\ifTechRep
+\appendix
+\input{9_appendix}
+\fi 
+
+\end{document}

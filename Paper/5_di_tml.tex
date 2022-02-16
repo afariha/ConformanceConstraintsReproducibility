@@ -1,0 +1,145 @@
+%!TEX root = paper.tex
+
+\newcommand{\arrTime}{\texttt{AT}\xspace}
+\newcommand{\depTime}{\texttt{DT}\xspace}
+\newcommand{\duration}{\texttt{DUR}\xspace}
+
+\looseness-1 In this section, we provide a theoretical justification of why
+\dis are effective in identifying tuples for which learned models are likely to
+make incorrect predictions. To that end, we define \emph{\nc} tuples and show
+that an ``ideal'' \di provides a sound and complete mechanism to detect \nc
+tuples. In Section~\ref{sec:synth-data-inv}, we showed that low-variance \views
+construct strong \dis.
+%, which yield a small conformance zone. 
+We now make a similar argument, but in a slightly different way: we show that
+\views with zero variance give us equality constraints that are useful for
+trusted machine learning. We start with an example to provide the intuition.
+
+\begin{example}\label{ex:one} 
+	%
+	 Consider the airlines dataset $D$ and assume that all tuples in $D$
+	 satisfy the equality constraint $\phi := \arrTime - \depTime - \duration = 0$
+	 (i.e., $\lb = \ub = 0$). Note that for equality constraint, the corresponding
+	 \view\ has {\em{zero}} variance---the lowest possible variance. Now, suppose
+	 that the task is to learn some function $f(\arrTime, \depTime, \duration)$.
+	 If the above constraint holds for $D$, then the ML model can instead learn
+	 the function $g(\arrTime, \depTime, \duration) = f(\depTime + \duration,
+	 \depTime, \duration)$. $g$ will perform just as well as $f$ on $D$: in fact,
+	 it will produce the same output as $f$ on $D$. If a new serving tuple $t$
+	 satisfies $\phi$, then $g(t) = f(t)$, and the prediction will be correct.
+	 However, if $t$ does not satisfy $\phi$, then $g(t)$ will likely be
+	 significantly different from $f(t)$. Hence, violation of the \di is a strong
+	 indicator of performance degradation of the learned prediction model. Note
+	 that $f$ need not be a linear function: as long as $g$ is also in the class
+	 of models that the learning procedure is searching over, the above argument
+	 holds.
+	 %
+\end{example}
+
+%Based on the intuition of Example~\ref{ex:one}, 
+We proceed to formally define \nc tuples. We use $[D;Y]$ to denote the
+{\em{annotated dataset}} obtained by appending the target attribute $Y$ to a
+dataset $D$, and $\coDom$ to denote $Y$'s domain.
+
+\begin{definition}[\Nc\ tuple]\label{def:trustworthy}
+    Given a class $\CC$ of functions with signature $\DDom^m \mapsto \coDom$,
+    and an annotated dataset $[D;Y] \subset (\DDom^m\times \coDom)$,
+    a tuple $t \in \DDom^m$ is \nc w.r.t. $\CC$ and $[D;Y]$, if
+    $\exists f, g \in \CC$ s.t. $f(D) = g(D) = Y$ but $f(t) \neq g(t)$. 
+\end{definition}
+
+Intuitively, $t$ is \nc if there exist two different predictor functions $f$
+and $g$ that agree on all tuples in $D$, but disagree on $t$. Since, we can
+never be sure whether the model learned $f$ or $g$, we should be cautious about
+the prediction on $t$. Example~\ref{ex:one} suggests that $t$ can be \nc when
+all tuples in $D$ satisfy the equality \di $f(\vec{A}) - g(\vec{A}) = 0$ but
+$t$ does not. Hence, we can use the following approach for trusted machine
+learning:
+%
+\begin{enumerate}
+	\addtolength{\itemindent}{1cm}
+	\item  Learn \dis $\Phi$ for the dataset $D$.
+	\item  Declare $t$ as \nc if $t$ does not satisfy $\Phi$.
+\end{enumerate}
+\smallskip
+
+The above approach is sound and complete for characterizing \nc tuples, thanks
+to the following proposition.
+
+
+\begin{proposition}\label{PROP:EXISTENCE}
+    There exists a \di $\Phi$ for $D$ s.t. the following statement
+    is true: ``$\neg\Phi(t)$ iff $t$ is \nc\ w.r.t. $\CC$ and $[D ; Y]$ for all $t \in \DDom^m$''.
+\end{proposition}
+
+The required \di $\Phi$ is: $\forall{f,g\in\CC}:f(D)=g(D)=Y \Rightarrow
+f(\vec{A}) - g(\vec{A}) = 0$.
+%where $A$ denotes the set of predictor attributes in $D$. 
+Intuitively, when all possible pairs of functions that agree on $D$ also agree
+on $t$, only then the prediction on $t$ can be trusted. (More discussion is in
+\appOrTechRep.)
+
+
+\subsection{Applicability}\label{applicability}
+
+\revisetwo{\paragraph{Generalization to noisy settings.} While our analysis and
+formalization for using \dis for TML focused on the noise-free setting, the
+intuition generalizes to noisy data. Specifically, suppose that $f$ and $g$ are
+two possible functions a model may learn over $D$; then, we expect that the
+difference $f-g$ will have small variance over $D$, and, thus, would be a good
+\di. In turn, the violation of this constraint would mean that $f$ and $g$
+diverge on a tuple $t$ (making $t$ unsafe); since we are oblivious of the
+function the model learned, prediction on $t$ is untrustworthy.}
+
+\smallskip
+
+\reviseone{\paragraph{False positives.} \Dis are designed to work in a
+model-agnostic setting. Although this setting is of great practical importance,
+designing a perfect mechanism for quantifying trust in ML model predictions,
+while remaining completely model-agnostic, is challenging. It raises the
+concern of \emph{false positives}: \dis may incorrectly flag tuples for which
+the model's prediction is in fact correct. This may happen when the model
+ignores the trend that \dis learn. Since we are oblivious of the prediction
+task and the model, it is preferable that \dis behave rather
+\emph{conservatively} so that the users can be cautious about potentially \nc
+tuples. Moreover, if a model ignores some attributes (or their interactions)
+during training, it is still necessary to learn \dis over them. Particularly,
+in case of concept drift~\cite{tsymbal2004problem}, the ground truth may start
+depending on those attributes, and by learning \dis over all attributes, we can
+better detect potential model failures.
+
+\smallskip
+
+\looseness-1 \paragraph{False negatives.} Another concern involving \dis is of
+\emph{false negatives}: linear \dis may miss nonlinear constraints, and, thus,
+fail to identify some unsafe tuples. However, the linear dependencies modeled
+in \dis persist even after sophisticated (nonlinear) attribute transformations.
+Therefore, violation of \dis is a strong indicator of potential failure of a
+possibly nonlinear model.
+
+\smallskip
+
+\paragraph{Modeling nonlinear constraints.} \looseness-1 While linear \dis are
+the most common ones, we note that our framework can be easily extended to
+support nonlinear \dis using \emph{kernel
+functions}~\cite{scholkopf2002learning}---which offer an efficient, scalable,
+and powerful mechanism to learn nonlinear decision boundaries for support
+vector machines (also known as \emph{kernel trick}). Briefly, instead of
+explicitly augmenting the dataset with transformed nonlinear attributes---which
+grows exponentially with the desired degree of polynomials---kernel functions
+enable \emph{implicit} search for nonlinear models. The same idea also applies
+for PCA called kernel-PCA~\cite{alzate2008kernel, DBLP:conf/nips/JiangKGG18}.
+While we limit our evaluation to only linear kernel, polynomial kernels---e.g.,
+radial basis function (RBF)~\cite{keerthi2003asymptotic}---can be plugged into
+our framework to model nonlinear \dis.
+
+In general, our conformance language is not guaranteed to model all possible
+functions that an ML model can potentially learn, and, thus, is not guaranteed to
+find the best \di. However, our empirical evaluation on real-world datasets
+shows that our language models \dis effectively.}
+
+
+ 
+
+
+
