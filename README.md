@@ -95,7 +95,7 @@ You should see 7 files within the directory `Plots`. They should match the corre
 ### Execute the following commands
 
 ```
-cd paper
+cd Paper
 pdflatex paper
 bibtex paper
 pdflatex paper
