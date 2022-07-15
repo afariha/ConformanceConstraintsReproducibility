@@ -2,7 +2,7 @@
 
 # Requires Python version Python 3.9.5
 
-PYTHON=$(which python3)
+PYTHON=$(which python3.9)
 set -x
 
 if [ $(id -u) != 0 ]; then
@@ -49,7 +49,8 @@ then
 else
     sudo -u $real_user virtualenv --python=$PYTHON venv
 fi
-sudo -s -u $real_user ./venv/bin/pip install matplotlib==3.5.0 scikit-learn==1.0.1
+sudo -s -u $real_user ./venv/bin/pip install --upgrade pip
+sudo -s -u $real_user ./venv/bin/pip install matplotlib==3.5.0 scikit-learn==1.0.1 jinja2 markupsafe==2.0.1
 sudo -s -u $real_user ./venv/bin/pip install -e DataInsights
 
 # Generate plots and tables
