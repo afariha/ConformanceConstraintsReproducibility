@@ -69,8 +69,8 @@ cd ../../..
 brew install virtualenv (sudo apt-get install -y virtualenv)
 virtualenv --python=/Library/Frameworks/Python.framework/Versions/3.9/bin/python3 venv (virtualenv --python=/usr/bin/python3 venv)
 source ./venv/bin/activate 
-sudo ./venv/bin/pip install matplotlib==3.5.0
-sudo ./venv/bin/pip install scikit-learn==1.0.1
+sudo ./venv/bin/pip install --upgrade pip
+sudo ./venv/bin/pip install matplotlib==3.5.0 scikit-learn==1.0.1 jinja2 markupsafe==2.0.1
 sudo ./venv/bin/pip install -e DataInsights
 ```
 
