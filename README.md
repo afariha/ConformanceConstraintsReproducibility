@@ -36,6 +36,7 @@ brew install texlive (sudo apt-get install -y texlive-full)
 ```
 
 - (Step 3-C) Download and extract data using git-lfs (or just simply download the data.zip from the repo and extract it manually).
+- If you find issue with this, you can alternatively get the data from here: https://shorturl.at/hC357
 ```
 brew install git-lfs	(sudo apt-get install -y git-lfs)
 git lfs install
