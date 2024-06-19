@@ -1,3 +1,5 @@
+# Winner of the ACM SIGMOD 2022 Most Reproducible Paper Award.
+
 # Reproduction Steps
 - Requires Python version Python 3.9.5 (Python 3.7 and 3.8 should also work, but we recommend 3.9.5)
 
