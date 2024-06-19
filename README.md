@@ -1,4 +1,4 @@
-# Winner of the ACM SIGMOD 2022 Most Reproducible Paper Award.
+# Winner of the ACM SIGMOD 2022 Most [Reproducible Paper Award](https://sigmod.org/sigmod-awards/sigmod-best-artifact-award/).
 
 # Reproduction Steps
 - Requires Python version Python 3.9.5 (Python 3.7 and 3.8 should also work, but we recommend 3.9.5)
